@@ -1,10 +1,11 @@
 import './App.css'
 import { useState , useEffect } from "react"
-
 import { lazy } from 'react'
 import { Suspense } from 'react'
 
 import NavigationBar from './components/Navigation/Navigation.jsx'
+
+const ViewCardPage = lazy(()=>import('./pages/ViewCard/ViewCard.jsx'))
 const CreateCardPage = lazy(()=>import('./pages/CreateCard/CreateCard.jsx'))
 const ContactsPage = lazy(()=>import('./pages/Contacts/Contacts.jsx'))
 const CardsPage = lazy(()=>import('./pages/Cards/Cards.jsx'))
@@ -14,7 +15,6 @@ const SignUpPage = lazy(()=>import('./pages/SignUp/SignUp.jsx'))
 const HomePage = lazy(()=>import('./pages/Home/HomePage.jsx'))
 
 import { BrowserRouter , Route , Routes } from 'react-router-dom'
-
 function App() {
  
   const [mobile, setMobile] = useState(window.innerWidth <= 767);
@@ -47,6 +47,7 @@ function App() {
         <Route path="/cards" element={<Suspense fallback={'DAMNNNNNN'}><CardsPage /></Suspense>} />
         <Route path="/contacts" element={<Suspense fallback={'DAMNNNNNN'}><ContactsPage /></Suspense>} />
         <Route path="/createcard" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage /></Suspense>} />
+        <Route path="/viewcard/:id" element={<Suspense fallback={'DAMNNNNNN'}><ViewCardPage /></Suspense>} />
       </Routes>
 
       <NavigationBar/>

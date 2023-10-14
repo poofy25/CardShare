@@ -17,7 +17,7 @@ function CreateCardPage() {
          const docRef = await addDoc(collection(db, "cards"), {
           cardData , userId:user.uid
           });
-       console.log(docRef)
+       console.log(docRef.id)
        }
        saveData()
       navigateTo('/cards')

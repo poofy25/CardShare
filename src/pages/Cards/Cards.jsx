@@ -29,9 +29,9 @@ function CardsPage() {
                 const querySnapshot = await getDocs(q);
                 const allCardDocuments = []
                 querySnapshot.forEach((doc) => {
-                allCardDocuments.push(doc.data())
+                allCardDocuments.push({...doc.data(), id:doc.id})
                 });
- 
+                  console.log(allCardDocuments)
                 setCardDocs(allCardDocuments)
         }
         getDocuments()
@@ -54,7 +54,7 @@ function CardsPage() {
     {cardDocs.map((cardData)=>{
        console.log(cardData)
         return(
-        <MiniCardComponent data={cardData.cardData}/>
+        <MiniCardComponent data={{...cardData}} cardDocs={cardDocs} setCardDocs={setCardDocs}/>
         )
     })}
 </div>
