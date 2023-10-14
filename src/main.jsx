@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { lazy } from 'react'
 import { Suspense } from 'react'
 
+import NavigationBar from './components/Navigation/Navigation.jsx'
 const ProfilePage = lazy(()=>import('./pages/Profile/Profile.jsx'))
 const SignInPage = lazy(()=>import('./pages/SignIn/SignIn.jsx'))
 const SignUpPage = lazy(()=>import('./pages/SignUp/SignUp.jsx'))
@@ -34,5 +35,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
     <App />
+    <NavigationBar/>
     </React.StrictMode>
 )
