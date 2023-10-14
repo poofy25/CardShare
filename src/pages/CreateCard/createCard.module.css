@@ -1,0 +1,22 @@
+.createCard{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+
+form{
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+
+}
+
+
+.saveCardBtn{
+    width: 50%;
+    align-self: center;
+    margin: 1rem;
+}

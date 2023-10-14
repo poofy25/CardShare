@@ -23,7 +23,6 @@ function HomePage() {
       <h2>{(user && loading === false) ?'You are signed in' : (!user && loading === false) ? 'You are not signed in' : ''}</h2>
    
          <button onClick={()=>{navigateTo('/signin')}}>Sign In</button>
-
          <button onClick={()=>{navigateTo('/signup')}}>Sign Up</button>
          <button onClick={()=>{navigateTo('/profile')}}>Profile</button>
 
