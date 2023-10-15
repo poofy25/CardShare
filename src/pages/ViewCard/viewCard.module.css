@@ -8,6 +8,7 @@ display: flex;
 align-items: center;
 justify-content: start;
 flex-direction: column;
+margin-bottom: 15vh;
 }
 
 
@@ -65,12 +66,13 @@ flex-direction: column;
 .saveBtnWrapper{
     width: 100vw;
     height: 15vh;
+    position: fixed;
     margin-top: auto;
     background-color: #E5CFF7;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    bottom: 0;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
 }
