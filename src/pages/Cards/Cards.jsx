@@ -22,7 +22,6 @@ function CardsPage() {
         //Fetching all the cards that matches the uid of the user from firestoree
         if(user && !loading){
             const q = query(collection(db, "cards"), where("userId", "==", user.uid));
-            console.log(q)
 
         async function getDocuments(){
                
@@ -31,7 +30,7 @@ function CardsPage() {
                 querySnapshot.forEach((doc) => {
                 allCardDocuments.push({...doc.data(), id:doc.id})
                 });
-                  console.log(allCardDocuments)
+                 
                 setCardDocs(allCardDocuments)
         }
         getDocuments()
@@ -52,7 +51,7 @@ function CardsPage() {
 
 <div>
     {cardDocs.map((cardData)=>{
-       console.log(cardData)
+      
         return(
         <MiniCardComponent data={{...cardData}} cardDocs={cardDocs} setCardDocs={setCardDocs}/>
         )

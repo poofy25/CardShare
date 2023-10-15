@@ -26,3 +26,7 @@ margin: 0.5rem;
     align-self: center;
     margin: 1rem;
 }
+
+.picture {
+    width: 50vw;
+}

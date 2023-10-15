@@ -3,14 +3,15 @@ import styles from './miniCard.module.css'
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
-
+import { ref , deleteObject } from 'firebase/storage';
+import { storage } from '../../firebase/firebase';
 function MiniCardComponent(props) {
 
     const navigateTo = useNavigate()
-
     const data = props.data
     const formData = data.cardData
     const cardID = data.id
+    const pictureRef = ref(storage, `cardImages/${formData.imgUUID}`);
     
 
     const deleteCard = ()=>{
@@ -20,10 +21,15 @@ function MiniCardComponent(props) {
             await deleteDoc(doc(db, "cards", cardID));
         }
         deleteDocFromDb()
+        deleteObject(pictureRef).then(() => {
+          console.log('file deleted succesfuly')
+        }).catch((error) => {
+        console.log(error)
+        });
         props.setCardDocs(
            current =>
                 current.filter(doc => {
-                  // 👇️ remove object that has id equal to 2
+                 
                   return doc.id !== cardID;
                 }),
              
