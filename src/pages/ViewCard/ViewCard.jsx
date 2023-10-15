@@ -8,6 +8,10 @@ import { useEffect , useState } from "react";
 import getBase64FromUrl from './getBase64';
 
 
+
+import phoneIcon from '/src/assets/icons/phoneIcon.png'
+import emailIcon from '/src/assets/icons/emailIcon.png'
+
 function ViewCardPage() {
 
     const params = useParams()
@@ -110,18 +114,20 @@ function ViewCardPage() {
 
     if(cardData){
         return (
-            <div>
-              <h1>View Card</h1>
-
+            <div className={styles.viewCardPage}>
               <img src={imgUrl} className={styles.image}/>
-              <h1>{cardData.cardData.Name}</h1>
-              <h2>{cardData.cardData.Title}</h2>
-              <h3>{cardData.cardData.PhoneNumber}</h3>
-              <h3>{cardData.cardData.Email}</h3>
 
-
-              <button onClick={saveToContacts}>SAVE TO CONTACTS</button>
-
+              <span className={styles.cardHead}>
+                <h1>{cardData.cardData.Name}</h1>
+                <h2>{cardData.cardData.Title}</h2>
+              </span>
+              <span className={styles.contactData}>
+                <a><img src={phoneIcon}/>{cardData.cardData.PhoneNumber}</a>
+                <a><img src={emailIcon}/>{cardData.cardData.Email}</a>
+              </span>
+              <span className={styles.saveBtnWrapper}>
+              <button onClick={saveToContacts} className={styles.saveBtn}>SAVE TO CONTACTS</button>
+              </span>
             </div>
         )
     }

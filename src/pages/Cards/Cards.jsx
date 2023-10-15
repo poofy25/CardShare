@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import MiniCardComponent from "../../components/MiniCard/MiniCard";
 import { useState } from "react";
 
+
 function CardsPage() {
 
     const navigateTo = useNavigate()

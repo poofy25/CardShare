@@ -1,3 +1,90 @@
+.viewCardPage{
+background-color: #f7f7f7;
+width: 100vw;
+height: 100vh;
+position: fixed;
+z-index: 1;
+display: flex;
+align-items: center;
+justify-content: start;
+flex-direction: column;
+}
+
+
 .image{
-    width: 50vw;
+    width: 100vw;
+    height: 40vh;
+    object-fit: cover;
+}
+
+
+.cardHead{
+    background-color: transparent;
+    box-sizing: border-box;
+    margin: 1rem;
+    margin-left: 5%;
+    padding-left: 3vw;
+    margin-right: auto;
+   
+    border-left:3px black dashed;
+}
+.cardHead > h2 ,h1 {
+    margin: 0.5rem;
+}
+
+
+
+.contactData{
+
+background-color: transparent;
+width: 100%;
+padding-left: 5%;
+box-sizing: border-box;
+margin: 0.5rem;
+display: flex;
+flex-direction: column;
+
+}
+.contactData > a {
+    font-size: 1.25rem;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+.contactData > a > img {
+    background-color: transparent;
+    height: 5vh;
+    aspect-ratio: 1;
+    margin-right: 1rem;
+}
+
+
+
+.saveBtnWrapper{
+    width: 100vw;
+    height: 15vh;
+    margin-top: auto;
+    background-color: #E5CFF7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+.saveBtn{
+    width: 80%;
+    height: 60%;
+    margin-bottom: 5%;
+    background-color: #5B0888;
+    border: none;
+    color: white;
+    border-radius: 16px;
+    font-weight: bold;
+    font-family:monospace;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 16px 8px rgba(0,0,0,0.25);
 }
