@@ -25,7 +25,7 @@ function ViewCardPage() {
         + contactData.name + 
         "\nTEL;TYPE=work,voice:" + contactData.number 
         + "\nEMAIL:" + contactData.email 
-        + `\nPHOTO;ENCODING=BASE64;TYPE=JPEG:[${imgBase64}]`
+        + `\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${imgBase64}`
         + `\nTITLE:${contactData.title}`
         + "\nEND:VCARD";
 
