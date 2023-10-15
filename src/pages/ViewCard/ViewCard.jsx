@@ -8,6 +8,13 @@ import { storage } from "../../firebase/firebase";
 import { ref , getDownloadURL } from "firebase/storage";
 import { useEffect , useState } from "react";
 
+const contactEx = {
+  number:null,
+  name:null,
+  img:null,
+  email:null
+}
+
 
 function ViewCardPage() {
 
@@ -16,6 +23,38 @@ function ViewCardPage() {
     const [cardData , setCardData] = useState(null)
     const [imgRef , setImgRef] = useState(null)
     const [imgUrl , setImgUrl] = useState(null)
+    const [contactData , setContactData] = useState(null)
+
+
+   const saveToContacts = ()=>{
+    if(contactData!==null){
+      console.log('it should work')
+    var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:"
+     + contactData.name + 
+     "\nTEL;TYPE=work,voice:" + contactData.number 
+     + "\nEMAIL:" + contactData.email 
+    // + `\nPHOTO;TYPE=JPEG;ENCODING=b:[${imgUrl}]`
+     + `\nPHOTO;JPEG:${imgUrl + '.jpeg'}`
+     + `\nTITLE:${contactData.title}`
+     + "\nEND:VCARD";
+
+
+
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url = URL.createObjectURL(blob);
+    
+    const newLink = document.createElement('a');
+    newLink.download = contactData.name + ".vcf";
+    newLink.textContent = contactData.name;
+    newLink.href = url;
+      console.log(newLink)
+    newLink.click();
+    }
+
+   }
+
+
+
 
     useEffect(()=>{
 
@@ -40,9 +79,11 @@ function ViewCardPage() {
     },[cardData])
 
     useEffect(()=>{
+      
       if(imgRef !== null){
       getDownloadURL(imgRef)
       .then((url) => {
+        console.log('IMG URL : ' , url)
         setImgUrl(url)
       })
       .catch((error) => {
@@ -52,6 +93,20 @@ function ViewCardPage() {
     }
 
     },[imgRef])
+    //sets contactData 
+    useEffect(()=>{
+      if(imgUrl!==null){
+      setContactData({
+        name:cardData.cardData.Name,
+        number:cardData.cardData.PhoneNumber,
+        email:cardData.cardData.Email,
+        img:imgUrl,
+        title:cardData.cardData.Title
+      })
+
+    }
+
+    },[imgUrl])
 
     if(cardData){
         return (
@@ -63,6 +118,9 @@ function ViewCardPage() {
               <h2>{cardData.cardData.Title}</h2>
               <h3>{cardData.cardData.PhoneNumber}</h3>
               <h3>{cardData.cardData.Email}</h3>
+
+
+              <button onClick={saveToContacts}>SAVE TO CONTACTS</button>
 
             </div>
         )
