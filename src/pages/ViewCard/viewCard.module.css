@@ -9,6 +9,22 @@ align-items: center;
 justify-content: start;
 flex-direction: column;
 margin-bottom: 15vh;
+position: relative;
+}
+
+.closeBtn{
+    position: absolute;
+    width: 15vw;
+    aspect-ratio: 1;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background-color: rgba(0,0,0,0.125);
+    border-radius: 9999px;
+    border: none;
+    color: rgba(255,255,255,0.75);
+    font-weight: bolder;
+    font-family: sans-serif;
 }
 
 

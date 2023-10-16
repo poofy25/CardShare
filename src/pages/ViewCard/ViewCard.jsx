@@ -6,13 +6,15 @@ import { storage } from "../../firebase/firebase";
 import { ref , getDownloadURL} from "firebase/storage";
 import { useEffect , useState } from "react";
 import getBase64FromUrl from './getBase64';
-
+import { useNavigate } from 'react-router-dom';
 
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
 
 function ViewCardPage() {
+
+    const navigateTo = useNavigate()
 
     const params = useParams()
     const [cardData , setCardData] = useState(null)
@@ -115,6 +117,7 @@ function ViewCardPage() {
     if(cardData){
         return (
             <div className={styles.viewCardPage}>
+              <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button>
               <img src={imgUrl} className={styles.image}/>
 
               <span className={styles.cardHead}>
