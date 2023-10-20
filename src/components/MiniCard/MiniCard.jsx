@@ -9,11 +9,14 @@ function MiniCardComponent(props) {
 
     const navigateTo = useNavigate()
     const data = props.data
-    const formData = data.cardData
+    const cardData = data.cardData
+    const generalData = cardData.generalData
+    const displayData = cardData.displayData
     const cardID = data.id
-    const pictureRef = ref(storage, `cardImages/${formData.imgUUID}`);
+    const pictureRef = ref(storage, `cardImages/${displayData.imageUUID}`);
     
 
+     console.log(cardData , generalData , displayData)
     const deleteCard = ()=>{
 
 
@@ -41,10 +44,8 @@ function MiniCardComponent(props) {
 
     return ( 
 <div className={styles.miniCard}>
-      <h2>{formData.Name}</h2>
-      <h3>{formData.Title}</h3>
-      <h4>{formData.PhoneNumber}</h4>
-      <h5>{formData.Email}</h5>
+      <h2>{generalData.cardname}</h2>
+
 
     <button onClick={(()=>{navigateTo(`/viewcard/${cardID}`)})}>View Card</button>
     <button>Edit Card</button>

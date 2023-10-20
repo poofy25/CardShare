@@ -1,0 +1,35 @@
+.linkField{
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 32px;
+    box-sizing: border-box;
+}
+.linkField > input {
+    margin: 1rem;
+    width: 50%;
+    aspect-ratio: 8/1;
+
+}
+.linkFieldHead{
+    background-color:transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.linkFieldHead > button {
+
+    right: 0;
+    top: 0;
+    width: 10vw;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: none;
+    font-weight: bolder;
+}

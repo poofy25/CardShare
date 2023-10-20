@@ -1,0 +1,16 @@
+.fieldsEdit{
+    display: none;
+}
+    
+    
+.active{
+    display: block;
+}
+
+
+
+
+.selectedFields{
+    background-color:  #f7f7f7;
+}
+

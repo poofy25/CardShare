@@ -1,0 +1,12 @@
+.displayEdit{
+    display: none;
+}
+    
+    
+.active{
+    display: block;
+}
+
+.profilePicture{
+    width: 50vw;
+}

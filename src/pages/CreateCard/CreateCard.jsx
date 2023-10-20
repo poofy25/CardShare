@@ -10,15 +10,51 @@ import { ref } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
+import GeneralCreateCard from './components/GeneralCreateCard.jsx';
+import DisplayCreateCard from './components/DisplayCreateCard.jsx';
+import FieldsCreateCard from './components/FieldsCreateCard.jsx';
+
+
+const cardNavComponents = {
+   general:(<GeneralCreateCard/>),
+   display:(<DisplayCreateCard/>),
+   fields:(<FieldsCreateCard/>)
+}
+
+
+
+
+
 function CreateCardPage() {
 
    const [user , loading] = useAuthState(auth);
    const navigateTo = useNavigate()
+
+   const [formsData , setFormsData] = useState({
+      generalData:{},
+      displayData:{},
+      fieldsData:{}
+   })
    const [picture , setPicture] = useState([])
-   const [pictureUrl , setPictureUrl] = useState([])
+   const [activeNavComponent , setActiveNavComponent] = useState(cardNavComponents.general)
    const pictureUUID = uuidv4()
    const storageRef = ref(storage, `cardImages/${pictureUUID}`);
    
+
+   const changeActiveComponent = (component,event)=>{
+
+      //this handles button active class
+     (document.querySelector(`.${styles.createCardNav}`).childNodes).forEach((child)=>{
+        child.classList.remove(styles.active)
+     })
+      event.target.classList.add(styles.active)
+      
+     //changes active component
+     if (component !== activeNavComponent){
+        setActiveNavComponent(component)
+      }
+   }
+
 
    const saveToDataBase = (cardData)=>{
       if(user&&!loading){
@@ -30,7 +66,7 @@ function CreateCardPage() {
        }
        saveData()
 
-       uploadBytes(storageRef, picture[0]).then((snapshot) => {
+       uploadBytes(ref(storage, `cardImages/${cardData.displayData.imageUUID}`), picture).then((snapshot) => {
          console.log('Uploaded a blob or file!');
          console.log(snapshot)
        });
@@ -46,36 +82,16 @@ function CreateCardPage() {
       }
    }
 
-   const onSavingCard = (e)=>{
-      //prevents the browser reloding
-      e.preventDefault();
+   const onSavingCard = ()=>{
+ 
+      saveToDataBase(formsData)
 
-      const form = e.target;
-      const formData = new FormData(form);
-      
-      //getting the form data
-      const formJson = Object.fromEntries(formData.entries());
-      console.log(formJson);
-      if(picture.length > 0){
-      saveToDataBase({...formJson , imgUUID: pictureUUID})
-      }else{
-         saveToDataBase(formJson)
-      }
    }
 
-   //On picture upload
+
+
    useEffect(()=>{
-    if(picture.length > 0){
-      const newPictureUrl = []
-
-      newPictureUrl.push(URL.createObjectURL(picture[0]))
-      console.log(newPictureUrl)
-      setPictureUrl(newPictureUrl)
-     
-    }
-
-
-
+      console.log(picture)
    },[picture])
 
 
@@ -87,39 +103,21 @@ function CreateCardPage() {
 
      <div className={styles.createCard}>
 
-
-        <h1>Create Your Card</h1>
-        <img src={pictureUrl} className={styles.picture}/>
-        <label>
-               Image
-               <input name="Picture" type='file' accept='image/*' onChange={(e)=>{setPicture(e.target.files)}}/>
-            </label>
-       <form onSubmit={onSavingCard}>
-           
+        <div className={styles.createCardHeader}>
+            <h1>Create Card</h1> 
+            <button className={styles.saveCardBtn} onClick={onSavingCard}>Save</button>
+        </div>
         
-            
-            <label>
-               Name
-               <input name="Name" defaultValue="Your Name"/>
-            </label>
-            <label>
-               Title
-               <input name="Title"/>
-            </label>
-            <label>
-               Phone Number
-               <input name="PhoneNumber"/>
-            </label>
-            <label>
-                Email
-               <input name="Email"/>
-            </label>
-            <button type='submit' className={styles.saveCardBtn}>Save Card</button>
+        <div className={styles.createCardNav}>
+            <button className={styles.active} onClick={(e)=>changeActiveComponent(cardNavComponents.general,e)}>General</button>
+            <button onClick={(e)=>changeActiveComponent(cardNavComponents.display,e)}>Display</button>
+            <button onClick={(e)=>changeActiveComponent(cardNavComponents.fields,e)}>Fields</button>
+        </div>
 
-        </form>
-
+        <GeneralCreateCard  status={activeNavComponent === cardNavComponents.general ? 'active' : 'inactive'} setFormsData={setFormsData}/>
+        <DisplayCreateCard status={activeNavComponent === cardNavComponents.display ? 'active' : 'inactive'} setFormsData={setFormsData} setPicture={setPicture} picture={picture}/>
+        <FieldsCreateCard  status={activeNavComponent === cardNavComponents.fields ? 'active' : 'inactive'}  setFormsData={setFormsData}/>
         
-
      </div>
 
 

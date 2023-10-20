@@ -1,0 +1,8 @@
+.generalEdit{
+display: none;
+}
+
+
+.active{
+    display: block;
+}

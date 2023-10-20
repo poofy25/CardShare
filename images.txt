@@ -1,0 +1,25 @@
+ICONS : 
+
+website
+instagram
+email
+linkedin
+facebook
+telegram
+phone
+github
+send
+link
+tiktok
+whatsapp
+discord
+andress
+note
+view
+edit
+delete
+cards
+save
+contacts
+profile
+plus

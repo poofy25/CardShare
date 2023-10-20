@@ -4,6 +4,65 @@
     justify-self: center;
 }
 
+.createCardHeader{
+    display: flex;
+    background-color: rgb(128,128,128);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+}
+
+.saveCardBtn{
+width: 20vw;
+position: absolute;
+right: 0rem;
+height: 100%;
+box-sizing: border-box;
+background-color: transparent;
+border: none;
+font-weight: bolder;
+font-size: 1.25rem;
+color: rgb(50, 255, 50);
+transition: 0.125s ease-in-out;
+}
+.saveCardBtn:active{
+    opacity: 0.5;
+}
+
+
+.createCardNav{
+    background-color: transparent;
+    width: 90vw;
+    align-self: center;
+    margin: 1rem;
+    border: 1px solid gray;
+    border-radius: 999px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.createCardNav > button {
+    flex:1;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 9999px;
+}
+.createCardNav > button.active {
+    background-color: blue;
+}
+
+
+
+
+
+
+
+
+
 
 form{
 
@@ -21,7 +80,7 @@ margin: 0.5rem;
 }
 
 
-.saveCardBtn{
+.saveCard{
     width: 50%;
     align-self: center;
     margin: 1rem;

@@ -5,7 +5,7 @@ import { db } from "../../firebase/firebase";
 import { storage } from "../../firebase/firebase";
 import { ref , getDownloadURL} from "firebase/storage";
 import { useEffect , useState } from "react";
-import getBase64FromUrl from './getBase64';
+import getBase64FromUrl from '../../functions/getBase64';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -18,6 +18,9 @@ function ViewCardPage() {
 
     const params = useParams()
     const [cardData , setCardData] = useState(null)
+    const generalData = cardData?.cardData?.generalData
+    const displayData = cardData?.cardData?.displayData
+    const fieldsData = cardData?.cardData?.fieldsData
     const [imgRef , setImgRef] = useState(null)
     const [imgUrl , setImgUrl] = useState(null)
     const [imgBase64 , setImgBase64] = useState(null)
@@ -65,10 +68,10 @@ function ViewCardPage() {
         }
        getDataFromId()
     },[])
-    //Settings image reference from storage after getting the card data
+    //Fetches image reference from storage after getting the card data
     useEffect(()=>{
       if(cardData!==null){
-       setImgRef(ref(storage, `cardImages/${cardData.cardData.imgUUID}`))
+       setImgRef(ref(storage, `cardImages/${cardData.cardData.displayData.imageUUID}`))
       }
     },[cardData])
     //Fetch the image url from the image reference
@@ -121,12 +124,19 @@ function ViewCardPage() {
               <img src={imgUrl} className={styles.image}/>
 
               <span className={styles.cardHead}>
-                <h1>{cardData.cardData.Name}</h1>
-                <h2>{cardData.cardData.Title}</h2>
+                <h1>{generalData.fullname}</h1>
+                <h2>{generalData.title}</h2>
+                <h2 style={{fontWeight:400}}>{generalData.company}</h2>
               </span>
+
+              <h3 className={styles.headline}>{generalData.headline}</h3>
+
               <span className={styles.contactData}>
-                <a><img src={phoneIcon}/>{cardData.cardData.PhoneNumber}</a>
-                <a><img src={emailIcon}/>{cardData.cardData.Email}</a>
+
+
+              {Object.entries(fieldsData).map(([field,data])=>{
+           return <a key={field}><img src={phoneIcon}/>{data.link}</a>
+        })}
               </span>
               <span className={styles.saveBtnWrapper}>
               <button onClick={saveToContacts} className={styles.saveBtn}>SAVE TO CONTACTS</button>
