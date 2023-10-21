@@ -17,7 +17,7 @@ const fieldValues = {
    },
    Instagram:{
     icon:instagramIcon,
-    defaultLink:'http://www.instagram/'
+    defaultLink:'http://www.instagram.com/'
    },
    Facebook:{
     icon:facebookIcon,
