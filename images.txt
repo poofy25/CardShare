@@ -1,13 +1,13 @@
 ICONS : 
 
-website
-instagram
-email
-linkedin
-facebook
-telegram
-phone
-github
+website >
+instagram >
+email >
+linkedin > 
+facebook >
+telegram >
+phone >
+github >
 send
 link
 tiktok

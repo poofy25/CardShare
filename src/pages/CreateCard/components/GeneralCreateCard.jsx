@@ -47,6 +47,11 @@ function GeneralCreateCard(props) {
             </label>
 
             <label>
+               Phone Number
+               <input name="phone" onChange={onChange}/>
+            </label>
+
+            <label>
                Title
                <input name="title" onChange={onChange}/>
             </label>

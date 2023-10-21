@@ -1,45 +1,50 @@
-const createVCard = (data)=>{
-  
-    const personalData = {
-        name:'',
-        phone:'',
-        email:'',
-        adress:'',
-        website:'',
-        link:''
-    }
-    const socialData = {
 
-        instagram:'',
-        facebook:'',
-        linkedin:'',
-        telegram:'',
-        twitter:'',
-        tiktok:'',
-        spanchat:'',
-        whatsapp:'',
-        github:''
-
-    }
+const vCardCode = {
+    fullname:'\nFN:',
+    phone:'\nTEL;TYPE=work,voice:',
+    title:'\nTITLE:',
+    company:'\nORG:',
+    photo:'\nPHOTO;ENCODING=BASE64;TYPE=JPEG:',
+    email:'\nEMAIL:',
+    Instagram:'\nURL;TYPE=Instagram:'
+}
 
 
 
 
 
+const createVCard = (data , imgBase64)=>{
 
 
 
-    var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:"
-    + contactData.name + 
-    "\nTEL;TYPE=work,voice:" + contactData.number 
-    + "\nEMAIL:" + contactData.email 
-    + `\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${imgBase64}`
-    + `\nTITLE:${contactData.title}`
-    + "\nEND:VCARD";
+console.log(data)
+const generalData = data.generalData
+const fieldsData = data.fieldsData
 
 
 
 
+
+    var vcard = "BEGIN:VCARD"
+    
+
+
+    {Object.entries(generalData).map(([key,value])=>{
+        if(vCardCode.hasOwnProperty(key)){
+            vcard = vcard + vCardCode[key] + value
+        }
+     })}
+     {Object.entries(fieldsData).map(([key,value])=>{
+        if(vCardCode.hasOwnProperty(key)){
+            console.log(key,value)
+            vcard = vcard + vCardCode[key] + value.link
+        }
+     })}
+    
+     vcard = vcard + vCardCode.photo + imgBase64
+     vcard = vcard + "\nEND:VCARD";
+
+   return vcard
 }
 
 export default createVCard

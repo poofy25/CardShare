@@ -7,10 +7,36 @@ import { ref , getDownloadURL} from "firebase/storage";
 import { useEffect , useState } from "react";
 import getBase64FromUrl from '../../functions/getBase64';
 import { useNavigate } from 'react-router-dom';
+import createVCard from '../../functions/createVCard';
 
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
+import websiteIcon from '/src/assets/icons/websiteIcon.png'
+import telegramIcon from '/src/assets/icons/telegramIcon.png'
+import facebookIcon from '/src/assets/icons/facebookIcon.png'
+import instagramIcon from '/src/assets/icons/instagramIcon.png'
+import githubIcon from '/src/assets/icons/githubIcon.png'
+import linkedInIcon from '/src/assets/icons/linkedInIcon.png'
+
+
+
+const icons = {
+
+  Phone:phoneIcon,
+  Email:emailIcon,
+  Website:websiteIcon,
+  Telegram:telegramIcon,
+  Facebook:facebookIcon,
+  Instagram:instagramIcon,
+  Github:githubIcon,
+  LinkedIn:linkedInIcon
+
+
+
+}
+
+
 
 function ViewCardPage() {
 
@@ -29,25 +55,17 @@ function ViewCardPage() {
 
    const saveToContacts = ()=>{
     if(contactData!==null){
-       //Creating the vCard information
-       var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:"
-        + contactData.name + 
-        "\nTEL;TYPE=work,voice:" + contactData.number 
-        + "\nEMAIL:" + contactData.email 
-        + `\nPHOTO;ENCODING=BASE64;TYPE=JPEG:${imgBase64}`
-        + `\nTITLE:${contactData.title}`
-        + "\nEND:VCARD";
-
-
-
-        var blob = new Blob([vcard], { type: "text/vcard" });
+    var vCard = createVCard(contactData , imgBase64)
+   
+        var blob = new Blob([vCard], { type: "text/vcard" });
         var url = URL.createObjectURL(blob);
-        
+        console.log(vCard , blob , url)
         const newLink = document.createElement('a');
         newLink.download = contactData.name + ".vcf";
         newLink.textContent = contactData.name;
         newLink.href = url;
         newLink.click();
+
     }
    }
 
@@ -108,11 +126,7 @@ function ViewCardPage() {
     useEffect(()=>{
       if(imgUrl!==null){
         setContactData({
-          name:cardData.cardData.Name,
-          number:cardData.cardData.PhoneNumber,
-          email:cardData.cardData.Email,
-          img:imgUrl,
-          title:cardData.cardData.Title
+          ...cardData.cardData , img:imgUrl,
         })
       }
     },[imgBase64])
@@ -131,11 +145,14 @@ function ViewCardPage() {
 
               <h3 className={styles.headline}>{generalData.headline}</h3>
 
-              <span className={styles.contactData}>
 
+
+              <span className={styles.contactData}>
+              {generalData?.phone && 
+              <a><img src={icons.Phone}/>{generalData?.phone}</a>}
 
               {Object.entries(fieldsData).map(([field,data])=>{
-           return <a key={field}><img src={phoneIcon}/>{data.link}</a>
+           return <a href={data.link} key={field}><img src={icons[field]}/>{data.display}</a>
         })}
               </span>
               <span className={styles.saveBtnWrapper}>
