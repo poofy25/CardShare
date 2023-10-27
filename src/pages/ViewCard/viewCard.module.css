@@ -82,7 +82,11 @@ flex-direction: column;
     aspect-ratio: 1;
     margin-right: 1rem;
 }
-
+a {
+    text-decoration: none;
+    color: #5B0888;
+    font-weight: bold;
+}
 
 
 .saveBtnWrapper{

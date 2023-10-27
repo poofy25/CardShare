@@ -23,6 +23,10 @@ const fieldValues = {
     icon:facebookIcon,
     defaultLink:'https://www.facebook.com/'
    },
+   Twitter:{
+    icon:facebookIcon,
+    defaultLink:'https://www.twitter.com/'
+   },
    LinkedIn:{
     icon:linkedInIcon,
     defaultLink:' https://www.linkedin.com/in/'
@@ -34,6 +38,14 @@ const fieldValues = {
    Telegram:{
     icon:telegramIcon,
     defaultLink:'https://t.me/'
+   },
+   Discord:{
+    icon:websiteIcon,
+    defaultLink:'https://discord.com/'
+   },
+   Whatsapp:{
+    icon:websiteIcon,
+    defaultLink:'https://whatsapp.com/'
    },
    Website:{
     icon:websiteIcon,

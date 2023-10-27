@@ -1,0 +1,43 @@
+.signUpPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.signUpForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.signUpForm > label {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+.signUpForm > label > input {
+    height: 3vh;
+    width: 100%;
+    box-sizing:border-box ;
+}
+
+.submitBtn{
+    width: 50%;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.signUpWith{
+    width: 50%;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+.errorCode{
+    color:red;
+    font-weight: 900;
+}

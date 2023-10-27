@@ -13,7 +13,6 @@ function NavigationBar() {
      <div className={styles.navBar}>
 
      <button onClick={()=>{navigateTo('/cards')}}>Cards</button>
-     <button onClick={()=>{navigateTo('/contacts')}}>Contacts</button>
      <button onClick={()=>{navigateTo('/profile')}}>Profile</button>
 
      </div>

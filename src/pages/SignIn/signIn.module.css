@@ -1,0 +1,44 @@
+.signInPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.signInForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.signInForm > label {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+.signInForm > label > input {
+    height: 3vh;
+    width: 100%;
+    box-sizing:border-box ;
+}
+
+.submitBtn{
+    width: 50%;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.signInWith{
+    width: 50%;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.errorCode{
+    color:red;
+    font-weight: 900;
+}

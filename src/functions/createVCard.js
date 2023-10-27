@@ -6,7 +6,7 @@ const vCardCode = {
     company:'\nORG:',
     photo:'\nPHOTO;ENCODING=BASE64;TYPE=JPEG:',
     email:'\nEMAIL:',
-    Instagram:'\nURL;TYPE=Instagram:',
+    Instagram:'\nURL;LABEL=Instagram:',
     Facebook:'\nURL;TYPE=Facebook:',
     Twitter:'\nURL;TYPE=Twitter:',
     LinkedIn:'\nURL;TYPE=LinkedIn:',

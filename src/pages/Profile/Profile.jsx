@@ -7,7 +7,6 @@ function ProfilePage() {
     const navigateTo = useNavigate()
     const location = useLocation()
     const [user , loading] = useAuthState(auth);
-console.log(user)
 
     const onSignOut = ()=>{
         auth.signOut()
