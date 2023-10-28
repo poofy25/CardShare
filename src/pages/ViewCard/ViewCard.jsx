@@ -8,7 +8,7 @@ import { useEffect , useState } from "react";
 import getBase64FromUrl from '../../functions/getBase64';
 import { useNavigate } from 'react-router-dom';
 import createVCard from '../../functions/createVCard';
-
+import fieldValues from '../../functions/fields';
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
@@ -152,7 +152,7 @@ function ViewCardPage() {
               <a><img src={icons.Phone}/>{generalData?.phone}</a>}
 
               {Object.entries(fieldsData).map(([field,data])=>{
-           return <a href={data.link} key={field}><img src={icons[field]}/>{data.display}</a>
+           return <a href={data.link} key={field}><img src={fieldValues[field].icon}/>{data.display}</a>
         })}
               </span>
               <span className={styles.saveBtnWrapper}>

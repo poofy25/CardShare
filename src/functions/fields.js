@@ -6,8 +6,10 @@ import facebookIcon from '/src/assets/icons/facebookIcon.png'
 import instagramIcon from '/src/assets/icons/instagramIcon.png'
 import githubIcon from '/src/assets/icons/githubIcon.png'
 import linkedInIcon from '/src/assets/icons/linkedInIcon.png'
-
-
+import tikTokIcon from '/src/assets/icons/tikTokIcon.png'
+import twitterIcon from '/src/assets/icons/twitterIcon.png'
+import discordIcon from '/src/assets/icons/discordIcon.png'
+import whatsappIcon from '/src/assets/icons/whatsappIcon.png'
 
 const fieldValues = {
 
@@ -17,14 +19,14 @@ const fieldValues = {
    },
    Instagram:{
     icon:instagramIcon,
-    defaultLink:'http://www.instagram.com/'
+    defaultLink:'https://www.instagram.com/'
    },
    Facebook:{
     icon:facebookIcon,
     defaultLink:'https://www.facebook.com/'
    },
    Twitter:{
-    icon:facebookIcon,
+    icon:twitterIcon,
     defaultLink:'https://www.twitter.com/'
    },
    LinkedIn:{
@@ -40,16 +42,20 @@ const fieldValues = {
     defaultLink:'https://t.me/'
    },
    Discord:{
-    icon:websiteIcon,
+    icon:discordIcon,
     defaultLink:'https://discord.com/'
    },
    Whatsapp:{
-    icon:websiteIcon,
+    icon:whatsappIcon,
     defaultLink:'https://whatsapp.com/'
    },
    Website:{
     icon:websiteIcon,
     defaultLink:'https://'
+   },
+   TikTok:{
+    icon:tikTokIcon,
+    defaultLink:'https://www.tiktok.com/@'
    },
 
 }

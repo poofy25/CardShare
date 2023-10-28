@@ -1,29 +1,10 @@
 import styles from './generalCreateCard.module.css'
-import { useState , useEffect} from 'react'
+
 
 
 function GeneralCreateCard(props) {
 
    const status = props.status
-   const setFormsData = props.setFormsData
-
-   const onChange = (e)=>{
-      const name = e.target.name
-      const value = e.target.value
-      if(value !== ''){
-         setFormsData(current=>{return{...current , generalData:{...current.generalData , [name]:value}}})
-      }else{
-         setFormsData(current => {
-            // remove cost key from object
-            const {[current.generalData]:value ,  ...other} = current;
-            const {[name]:value2 , ...other2} = current.generalData
-            const concData = {...other , generalData:{...other2}}
-            return concData;
-         })
-      }
-   }
-
-
 
 
 
@@ -37,33 +18,33 @@ function GeneralCreateCard(props) {
 
 
             <label>
-               Card Name
-               <input name="cardname" onChange={onChange}/>
+               Card Name *
+               <input name="cardname" type="text"  required onInvalid={()=>props.changeActiveComponent(props.cardNavComponents.general , null , document.getElementById('generalCreateBtn') )} />
             </label>
 
             <label>
-               Fullname
-               <input name="fullname" onChange={onChange}/>
+               Fullname *
+               <input name="fullname" type="text" required onInvalid={()=>props.changeActiveComponent(props.cardNavComponents.general , null , document.getElementById('generalCreateBtn') )} />
             </label>
 
             <label>
                Phone Number
-               <input name="phone" onChange={onChange}/>
+               <input name="phone" type="number" />
             </label>
 
             <label>
                Title
-               <input name="title" onChange={onChange}/>
+               <input name="title" type="text"  />
             </label>
 
             <label>
                Company
-               <input name="company" onChange={onChange}/>
+               <input name="company" type="text" />
             </label>
 
             <label>
                Headline
-               <input name="headline" onChange={onChange}/>
+               <input name="headline" type="text"/>
             </label>
 
      </form>

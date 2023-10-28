@@ -3,30 +3,7 @@ import fieldValues from '../../functions/fields'
 import isUrl from 'is-url'
 
 import { useState , useEffect} from 'react'
-
-import phoneIcon from '/src/assets/icons/phoneIcon.png'
-import emailIcon from '/src/assets/icons/emailIcon.png'
-import websiteIcon from '/src/assets/icons/websiteIcon.png'
-import telegramIcon from '/src/assets/icons/telegramIcon.png'
-import facebookIcon from '/src/assets/icons/facebookIcon.png'
-import instagramIcon from '/src/assets/icons/instagramIcon.png'
-import githubIcon from '/src/assets/icons/githubIcon.png'
-import linkedInIcon from '/src/assets/icons/linkedInIcon.png'
-
-const icons = {
-
-  Phone:phoneIcon,
-  Email:emailIcon,
-  Website:websiteIcon,
-  Telegram:telegramIcon,
-  Facebook:facebookIcon,
-  Instagram:instagramIcon,
-  Github:githubIcon,
-  LinkedIn:linkedInIcon
-
-}
-
-
+import FieldsCreateCard from '../../pages/CreateCard/components/FieldsCreateCard'
 
 function LinkField(props) {
 
@@ -43,17 +20,13 @@ function LinkField(props) {
 
     const onInputLink = (e)=>{
      const value = e.target.value
-     console.log(value)
+
 
      if(isUrl(value)){
-      console.log('valid link')
+     
       setFieldData(current=>{return{
        display:'' , link:value
       }})
-    //  }else if(isUrl('https://'+value)){
-    //   setFieldData(current=>{return{
-    //     display:value , link:'https://'+value
-    //   }})
       }else {
       setFieldData(current=>{return{
         display:value , link:defaultFieldData.defaultLink+value
@@ -66,7 +39,7 @@ function LinkField(props) {
 
     const onInputDisplay = (e)=>{
       const value = e.target.value 
-      console.log(value)
+
       setFieldData(current=>{return{
         ...current , display:value
       }})
@@ -74,7 +47,6 @@ function LinkField(props) {
 
 
     useEffect(()=>{
-      console.log(fieldData)
        setSelectedFields(current=>{return{
         ...current,[field]:{...fieldData}
       }})
@@ -87,7 +59,7 @@ function LinkField(props) {
 
     return ( 
 
-    <label className={styles.linkField}>
+    <label name={field} className={styles.linkField}>
       <div className={styles.linkFieldHead}>
         <h2>{field}</h2>
         <button type='button' onClick={()=>{
@@ -99,10 +71,12 @@ function LinkField(props) {
             })
         }}>X</button>
       </div>
+   
+        <input required name='fieldLink' onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputLink} placeholder={`Username or ${field} Link`}></input>
+       
         
-        <input onChange={onInputLink} placeholder={`Username or ${field} Link`}></input>
-        <input onChange={onInputDisplay} value={fieldData?.display} placeholder='Enter display text'></input>
-
+        <input required name='fieldDisplay' onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputDisplay} value={fieldData?.display} placeholder='Enter display text'></input>
+        
     </label>
 
 

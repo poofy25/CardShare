@@ -9,8 +9,8 @@ function DisplayCreateCard(props) {
     const setPicture = props.setPicture
     const picture = props.picture
     const [file, setFile] = useState(null);
-    const [imageUrl , setImageUrl] = useState('')
-    const setFormsData = props.setFormsData
+    const [imageUrl , setImageUrl] = useState(null)
+    const setImageUUID = props.setImageUUID
     const pictureUUID = uuidv4()
 
 useEffect(()=>{
@@ -22,13 +22,13 @@ useEffect(()=>{
 },[file])
 
 useEffect(()=>{
-    setPicture(file)
+    if(imageUrl)setPicture(file)
 },[imageUrl])
 
 useEffect(()=>{
-    setFormsData(current=>{return{
-        ...current , displayData:{imageUUID:pictureUUID}
-     }})
+    if(imageUrl){ 
+        console.log('set')
+        setImageUUID({imageUUID:pictureUUID})}
 },[picture])
 
 

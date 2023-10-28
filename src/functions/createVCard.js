@@ -4,15 +4,22 @@ const vCardCode = {
     phone:'\nTEL;TYPE=work,voice:',
     title:'\nTITLE:',
     company:'\nORG:',
+    headline:'\nNOTE:',
     photo:'\nPHOTO;ENCODING=BASE64;TYPE=JPEG:',
     email:'\nEMAIL:',
-    Instagram:'\nURL;LABEL=Instagram:',
+    Instagram:'\nURL;Instagram=Instagram:',
+    TikTok:'\nURL;TYPE=TikTok:',
+    Website:'\nURL;TYPE=Website:',
     Facebook:'\nURL;TYPE=Facebook:',
     Twitter:'\nURL;TYPE=Twitter:',
     LinkedIn:'\nURL;TYPE=LinkedIn:',
     Telegram:'\nURL;TYPE=Telegram:',
     Whatsapp:'\nURL;TYPE=Whatsapp:',
     Discord:'\nURL;TYPE=Discord:',
+
+
+
+
     Github:'\nURL;TYPE=Github:'
 }
 
