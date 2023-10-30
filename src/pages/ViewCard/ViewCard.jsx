@@ -54,6 +54,7 @@ function ViewCardPage() {
 
 
    const saveToContacts = ()=>{
+    console.log('damn')
     if(contactData!==null){
     var vCard = createVCard(contactData , imgBase64)
    
@@ -125,11 +126,19 @@ function ViewCardPage() {
     //Sets contactData 
     useEffect(()=>{
       if(imgUrl!==null){
+       
         setContactData({
           ...cardData.cardData , img:imgUrl,
         })
       }
     },[imgBase64])
+
+    useEffect(()=>{
+      if(contactData){
+      console.log('cLICK')
+      document.getElementById('saveToContactsBtn').click()
+      }
+    },[contactData])
 
     if(cardData){
         return (
@@ -156,7 +165,7 @@ function ViewCardPage() {
         })}
               </span>
               <span className={styles.saveBtnWrapper}>
-              <button onClick={saveToContacts} className={styles.saveBtn}>SAVE TO CONTACTS</button>
+              <button id='saveToContactsBtn' onClick={saveToContacts} className={styles.saveBtn}>SAVE TO CONTACTS</button>
               </span>
             </div>
         )
