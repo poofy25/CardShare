@@ -8,6 +8,7 @@
     display: flex;
     background-color: rgb(128,128,128);
     width: 100vw;
+    height: 10vh;
     justify-content: center;
     align-items: center;
     position: relative;

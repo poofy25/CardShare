@@ -1,12 +1,13 @@
 
 const vCardCode = {
     fullname:'\nFN:',
+    name:'\nN:',
     phone:'\nTEL;TYPE=work,voice:',
     title:'\nTITLE:',
     company:'\nORG:',
     headline:'\nNOTE:',
     photo:'\nPHOTO;ENCODING=BASE64;TYPE=JPEG:',
-    email:'\nEMAIL:',
+    Email:'\nEMAIL:',
     Instagram:'\nURL;Instagram=Instagram:',
     TikTok:'\nURL;TikTok=TikTok:',
     Website:'\nURL;Website=Website:',
@@ -44,6 +45,8 @@ const fieldsData = data.fieldsData
             vcard = vcard + vCardCode[key] + value
         }
      })}
+
+     vcard = vcard + vCardCode.name + generalData.fullname
      {Object.entries(fieldsData).map(([key,value])=>{
         if(vCardCode.hasOwnProperty(key)){
             console.log(key,value)

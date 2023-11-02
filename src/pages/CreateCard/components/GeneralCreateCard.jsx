@@ -43,7 +43,7 @@ function GeneralCreateCard(props) {
             </label>
 
             <label>
-               Headline
+               Notes
                <input name="headline" type="text"/>
             </label>
 

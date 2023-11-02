@@ -152,7 +152,7 @@ function ViewCardPage() {
                 <h2 style={{fontWeight:400}}>{generalData.company}</h2>
               </span>
 
-              <h3 className={styles.headline}>{generalData.headline}</h3>
+              {generalData.headline && <h3 className={styles.headline}>{generalData.headline}</h3> }
 
 
 
@@ -161,7 +161,7 @@ function ViewCardPage() {
               <a><img src={icons.Phone}/>{generalData?.phone}</a>}
 
               {Object.entries(fieldsData).map(([field,data])=>{
-           return <a href={data.link} key={field}><img src={fieldValues[field].icon}/>{data.display}</a>
+           return <a href={field=="Email" ? `mailto:${data.link}` :  data.link} key={field}><img src={fieldValues[field].icon}/>{data.display}</a>
         })}
               </span>
               <span className={styles.saveBtnWrapper}>

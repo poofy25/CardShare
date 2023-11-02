@@ -10,12 +10,12 @@ function NavigationBar() {
 
     return ( 
 
-     <div className={styles.navBar}>
+     <nav className={styles.navBar}>
 
      <button onClick={()=>{navigateTo('/cards')}}>Cards</button>
      <button onClick={()=>{navigateTo('/profile')}}>Profile</button>
 
-     </div>
+     </nav>
 
 
 
