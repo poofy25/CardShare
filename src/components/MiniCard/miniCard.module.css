@@ -7,3 +7,6 @@
     margin: 1rem;
     width: 50%;
 }
+.miniCard > button{
+    margin: 1rem;
+}
