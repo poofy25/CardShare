@@ -6,3 +6,56 @@ display: none;
 .active{
     display: block;
 }
+
+
+
+.fieldHeader{
+    width: 90vw;
+    font-size: 1.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    padding-left: 0;
+    border-bottom: 1px solid black;
+    font-weight: bolder;
+
+}
+
+
+.generalEdit > form > label {
+    width: 90%;
+    margin: 0.5rem;
+    font-size: 1.25rem;
+    position: relative;
+}
+
+.generalEdit > form > label > input {
+    font-size: 1.25rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+.generalEdit > form > label > textarea {
+    font-size: 1.25rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    height: 6rem;
+    font-family: sans-serif;
+    padding: 0.5rem;
+    border: 1px solid black;
+    resize: none;
+}
+
+
+.clearFieldBtn{
+    display: none;
+    position: absolute;
+    height: 2rem;
+    aspect-ratio: 1;
+    right: 0.25rem;
+    bottom: 0.25rem;
+}
+
+.generalEdit > form > label:hover .clearFieldBtn{
+    display: block;
+}
