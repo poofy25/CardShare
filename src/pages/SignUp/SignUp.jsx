@@ -156,7 +156,7 @@ function SignUpPage() {
       <h3>Or...</h3>
 
    <button className={styles.signUpWith} onClick={googleSignUp}> Sign up with Google</button>
-   {/* <button className={styles.signUpWith} onClick={facebookSignUp}> Sign up with Facebook</button> */}
+   <button className={styles.signUpWith} onClick={facebookSignUp}> Sign up with Facebook</button>
 
        <p>Already have an account ? <button onClick={()=>navigateTo('/signin')}>Sign In</button></p>
      </div>
