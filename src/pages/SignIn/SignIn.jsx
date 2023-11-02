@@ -5,9 +5,8 @@ import { auth , googleProvider} from "../../firebase/firebase";
 import { useNavigate   , useLocation} from "react-router-dom";
 import { useEffect , useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { serverTimestamp } from "firebase/firestore"
-import { getDoc , doc , setDoc } from "firebase/firestore";
-import { db  } from "../../firebase/firebase";
+import { FacebookAuthProvider } from 'firebase/auth';
+import { facebookProvider } from '../../firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function SignInPage() {
@@ -34,6 +33,37 @@ function SignInPage() {
             console.log(error)
            })
   }
+
+
+
+
+  const facebookSignIn = ()=>{
+    signInWithPopup(auth, facebookProvider)
+    .then((userCredential) => {
+      console.log('loading')
+      const user = userCredential.user
+
+      async function updateUser(){
+        await writeUserToDb(user)
+        console.log('Signed up Succesfull')
+        navigateTo('/profile' , {state:{error:'Signed up Succesfull'}})
+      }
+      updateUser()
+
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+
+      
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      console.log(error)
+      setErrorCode(errorCode)
+        // ...
+    });
+  }
+
 
 
 
@@ -66,6 +96,8 @@ function SignInPage() {
     });
     }
   }
+
+
 
 
 
@@ -106,7 +138,7 @@ function SignInPage() {
       <h3>Or...</h3>
 
    <button className={styles.signInWith} onClick={googleSignIn}> Sign in with Google</button>
-
+   <button className={styles.signInWith} onClick={facebookSignIn}> Sign in with Facebook</button>
        <p>Don't have an account ? <button onClick={()=>navigateTo('/signup')}>Sign Up</button></p>
      </div>
 
