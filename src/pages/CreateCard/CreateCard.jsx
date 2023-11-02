@@ -4,11 +4,13 @@ import { auth } from '../../firebase/firebase';
 import { collection } from 'firebase/firestore';
 import { addDoc } from 'firebase/firestore';
 import { db , storage  } from "../../firebase/firebase";
-import { useAsyncError, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState , useEffect } from 'react';
 import { ref } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
+import { doc , getDoc , setDoc } from 'firebase/firestore';
+import { getDownloadURL } from 'firebase/storage';
 import isUrl from 'is-url'
 import fieldValues from '../../functions/fields';
 
@@ -48,17 +50,29 @@ const validateFormsData = (data , fields)=>{
 
 
 
-function CreateCardPage() {
+function CreateCardPage(props) {
 
    const [user , loading] = useAuthState(auth);
    const navigateTo = useNavigate()
+
+   if(!user && loading == false )navigateTo('/signup')
+
 
    const [selectedFields , setSelectedFields] = useState({})
    const [imageUUID , setImageUUID] = useState({})
    const [picture , setPicture] = useState([])
    const [activeNavComponent , setActiveNavComponent] = useState(cardNavComponents.general)
 
-   
+
+   const params = useParams()
+   const [cardData , setCardData] = useState(null)
+   const [imgRef , setImgRef] = useState(null)
+   const [imgUrl , setImgUrl] = useState(null)
+
+
+
+
+   //CREATE CARD
    const changeActiveComponent = (component,event,btn)=>{
 
       //this handles button active class
@@ -73,32 +87,45 @@ function CreateCardPage() {
       }
    }
 
-
    const saveToDataBase = (cardData)=>{
-      console.log(cardData)
+
       if(user&&!loading){
-      async function saveData(){
-         const docRef = await addDoc(collection(db, "cards"), {
-          cardData , userId:user.uid
-          });
-       console.log(docRef.id)
-       }
-       saveData()
-       
-       if(cardData.displayData?.imageUUID){
-       uploadBytes(ref(storage, `cardImages/${cardData.displayData.imageUUID}`), picture).then((snapshot) => {
-         console.log('Uploaded a blob or file!');
-         console.log(snapshot)
-       });
-      }
+         if(props.use ==='create'){
+            async function saveData(){
+               const docRef = await addDoc(collection(db, "cards"), {
+               cardData , userId:user.uid
+               });
+            console.log(docRef.id)
+            }
+            saveData()
+            
+            if(cardData.displayData?.imageUUID){
+            uploadBytes(ref(storage, `cardImages/${cardData.displayData.imageUUID}`), picture).then((snapshot) => {
+               console.log('Uploaded a blob or file!');
+               console.log(snapshot)
+            });
+            }
+         }
 
-
-
-
+         if(props.use ==='edit'){
+            async function saveData(){
+               const docRef = await setDoc(doc(db, `cards` , params.id), {
+               cardData , userId:user.uid
+               });
+            }
+            saveData()
+            
+            if(cardData.displayData?.imageUUID && picture.length !== 0){
+            uploadBytes(ref(storage, `cardImages/${cardData.displayData.imageUUID}`), picture).then((snapshot) => {
+               console.log('Uploaded a blob or file!');
+               console.log(snapshot)
+            });
+            }
+         }
 
       navigateTo('/cards')
 
-
+       
       }
    }
 
@@ -159,10 +186,66 @@ function CreateCardPage() {
 
    }
 
-useEffect(()=>{
-   console.log("Active Component : ",activeNavComponent.type.name , selectedFields)
-},[activeNavComponent])
 
+
+// EDIT CARD
+
+
+ //Fethces the card data from the database
+ 
+ useEffect(()=>{
+   if(props.use === 'edit' && user){
+      console.log(user)
+   async function getDataFromId (){
+       const docRef = doc(db, "cards", params.id);
+       const docSnap = await getDoc(docRef);
+       if (docSnap.exists()) {
+          if(docSnap.data().userId !== user?.uid)navigateTo('/cards')
+           setCardData(docSnap.data())
+         } else {
+           console.log("No such document!");
+         }
+   }
+  getDataFromId()
+}
+},[user])
+//Fetches image reference from storage after getting the card data
+useEffect(()=>{
+   if(props.use === 'edit' && user && cardData){
+      console.log(cardData.cardData.generalData)
+ if(cardData!==null){
+  setImgRef(ref(storage, `cardImages/${cardData.cardData.displayData.imageUUID}`))
+ }
+}
+},[cardData])
+//Fetch the image url from the image reference
+useEffect(()=>{
+   if(props.use === 'edit' && user){
+ if(imgRef !== null){
+ getDownloadURL(imgRef)
+ .then((url) => {
+   setImgUrl(url)
+ })
+ .catch((error) => {
+
+   console.log(error)
+ })
+}
+   }
+},[imgRef])
+
+
+
+
+useEffect(()=>{
+   console.log(cardData)
+},[cardData])
+
+
+
+
+
+console.log((props.use === 'edit' && user && !cardData))
 
     return ( 
 
@@ -179,10 +262,42 @@ useEffect(()=>{
             <button id='fieldsCreateBtn' onClick={(e)=>changeActiveComponent(cardNavComponents.fields,e,null)}>Fields</button>
         </div>
 
-        <GeneralCreateCard  status={activeNavComponent.type.name === cardNavComponents.general.type.name ? 'active' : 'inactive'} changeActiveComponent={changeActiveComponent} cardNavComponents={cardNavComponents}/>
-        <DisplayCreateCard status={activeNavComponent.type.name === cardNavComponents.display.type.name ? 'active' : 'inactive'} setImageUUID={setImageUUID} setPicture={setPicture} picture={picture}/>
-        <FieldsCreateCard  status={activeNavComponent.type.name === cardNavComponents.fields.type.name ? 'active' : 'inactive'} changeActiveComponent={changeActiveComponent} setSelectedFields={setSelectedFields}  />
-        
+
+
+
+
+         {(props.use === 'edit' && !cardData) ? 'Loading Card Data' :
+          <>
+            <GeneralCreateCard
+               status={activeNavComponent.type.name === cardNavComponents.general.type.name ? 'active' : 'inactive'}
+               changeActiveComponent={changeActiveComponent}
+               cardNavComponents={cardNavComponents}
+               compUse={props.use}
+               cardGeneralData={props.use=='edit' && cardData !==null ? cardData?.cardData?.generalData : null}
+            />
+            <DisplayCreateCard  
+               status={activeNavComponent.type.name === cardNavComponents.display.type.name ? 'active' : 'inactive'}
+               setImageUUID={setImageUUID}
+               setPicture={setPicture}
+               picture={picture}
+               compUse={props.use}
+               cardDisplayData={props.use=='edit' && cardData !==null ? cardData?.cardData?.displayData : null}
+               editImgUrl={imgUrl}
+            />
+            <FieldsCreateCard
+               status={activeNavComponent.type.name === cardNavComponents.fields.type.name ? 'active' : 'inactive'}
+               changeActiveComponent={changeActiveComponent}
+               setSelectedFields={setSelectedFields}
+               compUse={props.use}
+               cardFieldsData={props.use=='edit' && cardData !==null ? cardData?.cardData?.fieldsData : null}
+            />
+          </>
+        }
+
+
+
+
+
      </div>
 
 

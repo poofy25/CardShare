@@ -8,14 +8,14 @@ import FieldsCreateCard from '../../pages/CreateCard/components/FieldsCreateCard
 function LinkField(props) {
 
 
-    
+    const data = props.data.fieldLinkData
     const field = props.data.field
     const defaultFieldData = fieldValues[field]
     const setSelectedFields = props.setSelectedFields
 
     const [fieldData , setFieldData] = useState({
       link:defaultFieldData.defaultLink,
-      display:''
+      display:data.display
     })
 
     const onInputLink = (e)=>{
@@ -72,7 +72,7 @@ function LinkField(props) {
         }}>X</button>
       </div>
    
-        <input required name='fieldLink' onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputLink} placeholder={field== 'Email' ? 'Email address' : `Username or ${field} Link`}></input>
+        <input required name='fieldLink' defaultValue={data.link.replace(defaultFieldData.defaultLink,'')} onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputLink} placeholder={field== 'Email' ? 'Email address' : `Username or ${field} Link`}></input>
        
         
         <input required name='fieldDisplay' onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputDisplay} value={fieldData?.display} placeholder='Enter display text'></input>

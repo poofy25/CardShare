@@ -48,7 +48,7 @@ function MiniCardComponent(props) {
 
 
     <button onClick={(()=>{navigateTo(`/viewcard/${cardID}`)})}>View Card</button>
-    <button>Edit Card</button>
+    <button onClick={(()=>{navigateTo(`/editcard/${cardID}`)})}>Edit Card</button>
     <button onClick={deleteCard} className={styles.deleteBtn}>Delete Card</button>
 
       </div>

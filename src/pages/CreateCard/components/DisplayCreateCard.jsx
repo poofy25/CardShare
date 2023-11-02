@@ -13,6 +13,11 @@ function DisplayCreateCard(props) {
     const setImageUUID = props.setImageUUID
     const pictureUUID = uuidv4()
 
+    const compUse = props.compUse
+    const isEdit = compUse == 'edit'
+    const cardDisplayData = props.cardDisplayData
+    const editImgUrl = props.editImgUrl
+
 useEffect(()=>{
     if(file){
         const newPictureUrl = []
@@ -31,6 +36,11 @@ useEffect(()=>{
         setImageUUID({imageUUID:pictureUUID})}
 },[picture])
 
+useEffect(()=>{
+    if(isEdit){
+        setImageUUID({imageUUID:cardDisplayData.imageUUID})
+    }
+},[])
 
 
     
@@ -39,7 +49,7 @@ useEffect(()=>{
     return (  
 <div className={`${styles.displayEdit} ${status==='active' && styles.active}`}>
     <h1>Display</h1>
-    <img src={imageUrl} className={styles.profilePicture}/>
+    <img src={imageUrl || editImgUrl} className={styles.profilePicture}/>
     <form id='displayForm'>
 
 

@@ -46,7 +46,8 @@ function App() {
         <Route path="/profile" element={<Suspense fallback={'DAMNNNNNN'}><ProfilePage /></Suspense>} />
         <Route path="/cards" element={<Suspense fallback={'DAMNNNNNN'}><CardsPage /></Suspense>} />
         <Route path="/contacts" element={<Suspense fallback={'DAMNNNNNN'}><ContactsPage /></Suspense>} />
-        <Route path="/createcard" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage /></Suspense>} />
+        <Route path="/createcard" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage use='create' /></Suspense>} />
+        <Route path="/editcard/:id" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage use='edit' /></Suspense>} />
         <Route path="/viewcard/:id" element={<Suspense fallback={'DAMNNNNNN'}><ViewCardPage /></Suspense>} />
       </Routes>
 

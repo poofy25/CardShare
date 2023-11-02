@@ -12,13 +12,20 @@ function FieldsCreateCard(props) {
     const [selectedFields , setSelectedFields] = useState({})
   
 
+    const compUse = props.compUse
+    const isEdit = compUse == 'edit'
+    const cardFieldsData = props.cardFieldsData
+
+
     useEffect(()=>{
       setAllSelectedFields(selectedFields)
     },[selectedFields])
 
-
-
-
+    useEffect(()=>{
+      if(isEdit){
+        setSelectedFields(cardFieldsData)
+      }
+    },[])
 
 
 
@@ -29,7 +36,8 @@ function FieldsCreateCard(props) {
       <form className={styles.selectedFields} id='fieldsForm' >
 
         {Object.entries(selectedFields).map(([field,data])=>{
-           return <LinkField data={{field:field,link:data}} key={field} setSelectedFields={setSelectedFields} changeActiveComponent={props.changeActiveComponent}/>
+           console.log(field,data)
+           return <LinkField data={{field:field,fieldLinkData:data}} key={field} setSelectedFields={setSelectedFields} changeActiveComponent={props.changeActiveComponent}/>
         })}
 
 
