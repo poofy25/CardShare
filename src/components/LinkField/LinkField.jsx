@@ -63,14 +63,14 @@ function LinkField(props) {
       <div className={styles.linkFieldHead}>
         <img src={fieldValues[field].icon}/>
         <h3>{field}</h3>
-        <button type='button' onClick={()=>{
+        <div className={styles.xBtn}  onClick={(e)=>{
             setSelectedFields(current=>{
               const {[field]:value, ...other} = current
                return(
                 other
                )
             })
-        }}>X</button>
+        }}>X</div>
       </div>
    
         <input required name='fieldLink' defaultValue={data.link.replace(defaultFieldData.defaultLink,'')} onInvalid={()=>props.changeActiveComponent(<FieldsCreateCard/> , null , document.getElementById('fieldsCreateBtn'))} onChange={onInputLink} placeholder={field== 'Email' ? 'Email address' : `Username or ${field} Link`}></input>

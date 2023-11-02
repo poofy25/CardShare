@@ -45,3 +45,10 @@
     border: none;
     font-weight: bolder;
 }
+
+.xBtn{
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: #000000;
+}

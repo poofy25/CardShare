@@ -57,6 +57,7 @@ transition: 0.125s ease-in-out;
     font-size: 1.25rem;
     font-family: sans-serif;
     font-weight: bolder;
+    color: #000000;
 }
 .createCardNav > button.active {
     background-color:  #5B0888;
