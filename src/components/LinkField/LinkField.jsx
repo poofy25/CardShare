@@ -61,7 +61,8 @@ function LinkField(props) {
 
     <label name={field} className={styles.linkField}>
       <div className={styles.linkFieldHead}>
-        <h2>{field}</h2>
+        <img src={fieldValues[field].icon}/>
+        <h3>{field}</h3>
         <button type='button' onClick={()=>{
             setSelectedFields(current=>{
               const {[field]:value, ...other} = current

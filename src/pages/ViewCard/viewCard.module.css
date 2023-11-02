@@ -101,6 +101,7 @@ a {
     bottom: 0;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
+    z-index: 99;
 }
 
 .saveBtn{

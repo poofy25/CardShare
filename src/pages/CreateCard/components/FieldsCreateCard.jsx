@@ -31,8 +31,11 @@ function FieldsCreateCard(props) {
 
     return (  
 <div className={`${styles.fieldsEdit} ${status==='active' && styles.active}`}>
-     <h1>Fields</h1>
-
+      {Object.keys(selectedFields).length === 0 &&
+      <div className={styles.emptyFieldBlock}>
+        <h>Tap a field to add it to your card.</h>
+      </div>
+      }
       <form className={styles.selectedFields} id='fieldsForm' >
 
         {Object.entries(selectedFields).map(([field,data])=>{
@@ -45,7 +48,7 @@ function FieldsCreateCard(props) {
 
 
 
-    <div>
+    <section className={styles.fieldsBtnSection}>
 
     <h3>Social</h3>
 
@@ -58,7 +61,6 @@ function FieldsCreateCard(props) {
 
     <h3>Communication</h3>
     <LinkFieldBtn   data={{icon:'',text:'Telegram' }} setSelectedFields={setSelectedFields}/>
-    <LinkFieldBtn   data={{icon:'',text:'Whatsapp' }} setSelectedFields={setSelectedFields}/>
     <LinkFieldBtn   data={{icon:'',text:'Email' }} setSelectedFields={setSelectedFields}/>
     <LinkFieldBtn   data={{icon:'',text:'Discord' }} setSelectedFields={setSelectedFields}/>
     
@@ -68,7 +70,7 @@ function FieldsCreateCard(props) {
 
 
 
-    </div>
+    </section>
 
 
 

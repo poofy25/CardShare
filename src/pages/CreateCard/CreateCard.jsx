@@ -252,8 +252,8 @@ console.log((props.use === 'edit' && user && !cardData))
      <div className={styles.createCard}>
 
         <div className={styles.createCardHeader}>
-            <h1>Create Card</h1> 
-            <button className={styles.saveCardBtn} onClick={onSavingCard}>Save</button>
+            <h1>{props.use === 'edit' ?'Edit Card' : 'Create Card'}</h1> 
+            <button className={styles.saveCardBtn} onClick={onSavingCard}>SAVE</button>
         </div>
         
         <div className={styles.createCardNav}>

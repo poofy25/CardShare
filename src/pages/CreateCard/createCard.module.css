@@ -2,14 +2,16 @@
     display: flex;
     flex-direction: column;
     justify-self: center;
+    background-color: #f7f7f7;
 }
 
 .createCardHeader{
     display: flex;
-    background-color: rgb(128,128,128);
+    background-color:#5B0888;
     width: 100vw;
     height: 10vh;
     justify-content: center;
+    font-family: sans-serif;
     align-items: center;
     position: relative;
     color: white;
@@ -35,12 +37,13 @@ transition: 0.125s ease-in-out;
 
 .createCardNav{
     background-color: transparent;
+    background-color: #E5CFF7;
     width: 90vw;
     align-self: center;
     margin: 1rem;
-    border: 1px solid gray;
+    border: 1px solid  #5B0888;
     border-radius: 999px;
-    height: 5vh;
+    height:6vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,9 +54,13 @@ transition: 0.125s ease-in-out;
     background-color: transparent;
     border: none;
     border-radius: 9999px;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    font-weight: bolder;
 }
 .createCardNav > button.active {
-    background-color: blue;
+    background-color:  #5B0888;
+    color: #f7f7f7;
 }
 
 

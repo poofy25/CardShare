@@ -1,22 +1,24 @@
+
+import styles from './linkFieldBtn.module.css'
+import fieldValues from '../../functions/fields'
+
 function LinkFieldBtn(props) {
 
 
-    const icon = props.data.icon
     const field = props.data.text
-
     const setSelectedFields = props.setSelectedFields
 
 
 
     return ( 
 
-     <button onClick={()=>{
+     <button className={styles.fieldBtn} onClick={()=>{
 
 
       setSelectedFields(current=>{
         return({...current , [field]:{link:''}})})
      }}>
-       <img src={icon}/>
+       <img src={fieldValues[field].icon}/>
        {field}
      </button>
 

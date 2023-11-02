@@ -1,16 +1,62 @@
 .fieldsEdit{
     display: none;
+
 }
     
     
-.active{
-    display: block;
+.fieldsEdit.active{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    background-color: #f7f7f7 ;
+    min-height: 70vh;
 }
 
 
 
 
 .selectedFields{
-    background-color:  #f7f7f7;
+    
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
+.fieldsBtnSection{
+    margin-top:auto ;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2;
+    padding: 1rem;
+    padding-top: 0rem;
+    overflow: hidden;
+    background-color: #E5CFF7;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-self: flex-end;
+}
+.fieldsBtnSection > h3 {
+    width: 100%;
+    font-family: sans-serif;
+}
+
+
+
+.emptyFieldBlock{
+    border: 2px dashed black;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border-radius: 8px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}

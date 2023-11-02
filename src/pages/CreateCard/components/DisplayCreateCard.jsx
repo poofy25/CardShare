@@ -48,16 +48,16 @@ useEffect(()=>{
 
     return (  
 <div className={`${styles.displayEdit} ${status==='active' && styles.active}`}>
-    <h1>Display</h1>
-    <img src={imageUrl || editImgUrl} className={styles.profilePicture}/>
+    
     <form id='displayForm'>
 
 
 
-
-   <label>
-      <h2>Profile Picture</h2>
-      <input type="file" name="myImage" accept="image/*" onChange={(e)=>{setFile(e.target.files[0])}}/>
+    <h2>Profile Picture</h2>
+   <label className={styles.uploadImageBtn}>
+      <img src={imageUrl || editImgUrl} className={styles.profilePicture}/>
+      <h1>+</h1>
+      <input type="file" name="myImage" accept="image/*" onChange={(e)=>{setFile(e.target.files[0])}} hidden/>
    </label>
    
   

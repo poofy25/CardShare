@@ -1,0 +1,21 @@
+.fieldBtn{
+    padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+    margin: 0.25rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid #5B0888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E5CFF7;
+
+}
+
+.fieldBtn:active {
+    background-color: #f5effb;
+}
+.fieldBtn > img {
+    height: 1rem;
+    aspect-ratio: 1;
+    margin-right: 0.4rem;
+}
