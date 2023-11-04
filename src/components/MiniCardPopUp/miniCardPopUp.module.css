@@ -1,0 +1,127 @@
+.miniCardPopUp{
+    width: 100vw;
+    height: 80vh;
+    background-color:  #5B0888 ;
+    display: none;
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+}
+.miniCardPopUp.active {
+    display: block;
+}
+
+.miniCardPopUpShadow{
+ background-color: rgba(0,0,0,0.5);
+ width: 100vw;
+ height: 100vh;
+ position: fixed;
+ top:0;
+ left: 0;
+ z-index: -1;
+}
+
+.miniCardPopUpSection{
+   width: 100%;
+   height: 100%;
+   background-color: #E5CFF7; 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: start;
+}
+
+.miniCardPopUpSection > header {
+    background-color: transparent;
+    width: 100%;
+    height: 10vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: #5B0888;
+}
+
+.miniCardPopUpSection > header > button {
+    background-color: #efe3f8;
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.2);
+    right: 5vw;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.5rem;
+    width: 2.5rem;
+    font-family: sans-serif;
+    font-weight: bolder;
+    aspect-ratio: 1;
+    position: absolute;
+    color: #5B0888;
+
+}
+
+
+
+.bigBtnSection{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5vw;
+    box-sizing: border-box;
+    gap: 5vw;
+}
+
+.bigBtnSection > button {
+    padding: 5vw;
+    box-sizing: border-box;
+    width: 42.5vw;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    background-color: #efe3f8;
+    border: none;
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+.bigBtnSection > button > img{
+    width: 30%;
+    aspect-ratio: 1;
+    margin-bottom: 10%;
+}
+.bigBtnSection > button > h1{
+    margin: 0rem;
+}
+.bigBtnSection > button > p {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.deleteCardBtn{
+    width: 42.5vw;
+    aspect-ratio: 4/1;
+    background-color: #efe3f8;
+    border: none;
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: normal;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 2.5vw;
+    line-height: 100%;
+}
+.deleteCardBtn > img {
+    height: 100%;
+    aspect-ratio: 1;
+    margin-right: 2.5vw;
+
+}

@@ -1,12 +1,18 @@
 .miniCard{
-    background-color: red;
+    background-color: #5B0888;
+    color: #E5CFF7 ;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 1rem;
-    width: 50%;
+    margin: 0vw;
+    width: 42.5vw;
+    aspect-ratio: 10/14;
+    border-radius:8px;
+    font-family: sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 .miniCard > button{
-    margin: 1rem;
+    margin: 0rem;
 }
