@@ -47,7 +47,7 @@ const fieldValues = {
    },
    Whatsapp:{
     icon:whatsappIcon,
-    defaultLink:'https://whatsapp.com/'
+    defaultLink:'https://wa.me/'
    },
    Website:{
     icon:websiteIcon,
@@ -57,6 +57,7 @@ const fieldValues = {
     icon:tikTokIcon,
     defaultLink:'https://www.tiktok.com/@'
    },
+   
 
 }
 

@@ -3,6 +3,7 @@ import { useState , useEffect } from "react"
 import { lazy } from 'react'
 import { Suspense } from 'react'
 
+import LoadingComponent from './components/Loading/Loading'
 import NavigationBar from './components/Navigation/Navigation.jsx'
 
 const ViewCardPage = lazy(()=>import('./pages/ViewCard/ViewCard.jsx'))
@@ -39,16 +40,16 @@ function App() {
 <BrowserRouter>
 
       <Routes>
-        <Route path="/" element={<Suspense fallback={'DAMNNNNNN'}><HomePage /></Suspense>} />
-        <Route path="/home" element={<Suspense fallback={'DAMNNNNNN'}><HomePage /></Suspense>}/>
-        <Route path="/signin" element={<Suspense fallback={'DAMNNNNNN'}><SignInPage /></Suspense>} />
-        <Route path="/signup" element={<Suspense fallback={'DAMNNNNNN'}><SignUpPage /></Suspense>} />
-        <Route path="/profile" element={<Suspense fallback={'DAMNNNNNN'}><ProfilePage /></Suspense>} />
-        <Route path="/cards" element={<Suspense fallback={'DAMNNNNNN'}><CardsPage /></Suspense>} />
-        <Route path="/contacts" element={<Suspense fallback={'DAMNNNNNN'}><ContactsPage /></Suspense>} />
-        <Route path="/createcard" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage use='create' /></Suspense>} />
-        <Route path="/editcard/:id" element={<Suspense fallback={'DAMNNNNNN'}><CreateCardPage use='edit' /></Suspense>} />
-        <Route path="/viewcard/:id" element={<Suspense fallback={'DAMNNNNNN'}><ViewCardPage /></Suspense>} />
+        <Route path="/" element={<Suspense fallback={<LoadingComponent/>}><HomePage /></Suspense>} />
+        <Route path="/home" element={<Suspense fallback={<LoadingComponent/>}><HomePage /></Suspense>}/>
+        <Route path="/signin" element={<Suspense fallback={<LoadingComponent/>}><SignInPage /></Suspense>} />
+        <Route path="/signup" element={<Suspense fallback={<LoadingComponent/>}><SignUpPage /></Suspense>} />
+        <Route path="/profile" element={<Suspense fallback={<LoadingComponent/>}><ProfilePage /></Suspense>} />
+        <Route path="/cards" element={<Suspense fallback={<LoadingComponent/>}><CardsPage /></Suspense>} />
+        <Route path="/contacts" element={<Suspense fallback={<LoadingComponent/>}><ContactsPage /></Suspense>} />
+        <Route path="/createcard" element={<Suspense fallback={<LoadingComponent/>}><CreateCardPage use='create' /></Suspense>} />
+        <Route path="/editcard/:id" element={<Suspense fallback={<LoadingComponent/>}><CreateCardPage use='edit' /></Suspense>} />
+        <Route path="/viewcard/:id" element={<Suspense fallback={<LoadingComponent/>}><ViewCardPage /></Suspense>} />
       </Routes>
 
       <NavigationBar/>

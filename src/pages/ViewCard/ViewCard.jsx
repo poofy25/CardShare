@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import createVCard from '../../functions/createVCard';
 import fieldValues from '../../functions/fields';
 
+import LoadingComponent from '../../components/Loading/Loading';
+
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
 import websiteIcon from '/src/assets/icons/websiteIcon.png'
@@ -44,6 +46,7 @@ function ViewCardPage() {
 
     const params = useParams()
     const [cardData , setCardData] = useState(null)
+    const [loading,setLoading] = useState(true)
     const generalData = cardData?.cardData?.generalData
     const displayData = cardData?.cardData?.displayData
     const fieldsData = cardData?.cardData?.fieldsData
@@ -76,13 +79,16 @@ function ViewCardPage() {
     useEffect(()=>{
 
         async function getDataFromId (){
+          setLoading(true)
             const docRef = doc(db, "cards", params.id);
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                
                 setCardData(docSnap.data())
+                setLoading(false)
               } else {
                 console.log("No such document!");
+                setLoading(false)
               }
         }
        getDataFromId()
@@ -171,9 +177,13 @@ function ViewCardPage() {
         )
     }
 
-
+    if (loading){
+     return(
+      <LoadingComponent/>
+     )
+    }
     return ( 
-
+      
       <h1>No card with this id exists</h1>
 
 
