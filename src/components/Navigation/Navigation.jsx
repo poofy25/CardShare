@@ -11,7 +11,7 @@ function NavigationBar() {
     return ( 
 
      <nav className={styles.navBar}>
-
+     <button onClick={()=>{navigateTo('/contacts')}}>Contacts</button>
      <button onClick={()=>{navigateTo('/cards')}}>Cards</button>
      <button onClick={()=>{navigateTo('/profile')}}>Profile</button>
 

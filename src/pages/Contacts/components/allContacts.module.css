@@ -1,0 +1,6 @@
+.allContacts{
+    display: none;
+}
+.allContacts.active{
+    display: block;
+}

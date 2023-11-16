@@ -11,6 +11,7 @@ import createVCard from '../../functions/createVCard';
 import fieldValues from '../../functions/fields';
 
 import LoadingComponent from '../../components/Loading/Loading';
+import SendBackContactBtn from '../../components/SendBackContact/SendBackContactBtn';
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
@@ -57,18 +58,17 @@ function ViewCardPage() {
 
 
    const saveToContacts = ()=>{
-    console.log('damn')
+
     if(contactData!==null){
     var vCard = createVCard(contactData , imgBase64)
    
         var blob = new Blob([vCard], { type: "text/vcard" });
         var url = URL.createObjectURL(blob);
-        console.log(vCard , blob , url)
         const newLink = document.createElement('a');
         newLink.download = contactData.name + ".vcf";
         newLink.textContent = contactData.name;
         newLink.href = url;
-        newLink.click();
+        // newLink.click();
 
     }
    }
@@ -87,7 +87,6 @@ function ViewCardPage() {
                 setCardData(docSnap.data())
                 setLoading(false)
               } else {
-                console.log("No such document!");
                 setLoading(false)
               }
         }
@@ -141,7 +140,6 @@ function ViewCardPage() {
 
     useEffect(()=>{
       if(contactData){
-      console.log('cLICK')
       document.getElementById('saveToContactsBtn').click()
       }
     },[contactData])
@@ -151,7 +149,7 @@ function ViewCardPage() {
             <div className={styles.viewCardPage}>
               <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button>
               <img src={imgUrl} className={styles.image}/>
-
+              <SendBackContactBtn data={cardData} imgUrl={imgUrl}/>
               <span className={styles.cardHead}>
                 <h1>{generalData.fullname}</h1>
                 <h2>{generalData.title}</h2>

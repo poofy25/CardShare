@@ -1,0 +1,6 @@
+.contactRequests{
+    display: none;
+}
+.contactRequests.active{
+    display: block;
+}
