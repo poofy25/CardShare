@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styles from './sendBackContact.module.css'
+import styles from './SendBackContact.module.css'
 import { addDoc , collection } from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
 
