@@ -15,9 +15,9 @@ function SendBackContact(props) {
         phonenumber:null
     })
 
+
     const formOnSubmit = (e)=>{
         e.preventDefault()
-        console.log(formData)
         sendingDataToDb()
     }
 
