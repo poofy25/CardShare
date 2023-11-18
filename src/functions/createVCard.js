@@ -2,22 +2,22 @@
 const vCardCode = {
     fullname:'\nFN:',
     name:'\nN:',
-    phone:'\nTEL;TYPE=work,voice:',
+    phone:'\nTEL;TYPE=WORK:',
     title:'\nTITLE:',
     company:'\nORG:',
     headline:'\nNOTE:',
-    photo:'\nPHOTO;ENCODING=BASE64;TYPE=JPEG:',
+    photo:'\nPHOTO;TYPE=JPEG;ENCODING=B:',
     Email:'\nEMAIL:',
-    Instagram:'\nURL;Instagram=Instagram:',
-    TikTok:'\nURL;TikTok=TikTok:',
-    Website:'\nURL;Website=Website:',
-    Facebook:'\nURL;Facebook=Facebook:',
-    Twitter:'\nURL;Twitter=Twitter:',
-    LinkedIn:'\nURL;LinkedIn=LinkedIn:',
-    Telegram:'\nURL;Telegram=Telegram:',
-    Whatsapp:'\nURL;Whatsapp=Whatsapp:',
-    Discord:'\nURL;Discord=Discord:',
-    Github:'\nURL;Github=Github:'
+    Instagram:'\nURL;TYPE=INSTAGRAM',
+    TikTok:'\nURL;TYPE=TIKTOK',
+    Website:'\nURL;TYPE=WEBSITE:',
+    Facebook:'\nURL;TYPE=FACEBOOK',
+    Twitter:'\nURL;TYPE=TWITTER',
+    LinkedIn:'\nURL;TYPE=LINKEDIN',
+    Telegram:'\nURL;TYPE=TELEGRAM',
+    Whatsapp:'\nURL;TYPE=WHATSAPP',
+    Discord:'\nURL;TYPE=DISCORD',
+    Github:'\nURL;TYPE=GITHUB'
 }
 
 
@@ -36,7 +36,7 @@ const fieldsData = data.fieldsData
 
 
 
-    var vcard = "BEGIN:VCARD\nVERSION:4.0"
+    var vcard = "BEGIN:VCARD\nVERSION:3.0"
     
 
 
