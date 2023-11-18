@@ -1,8 +1,7 @@
 import { useEffect } from "react"
 import styles from "./shareCard.module.css"
 
-import QRCode from 'qrcode'
-
+import QrCode from 'qrcodejs';
 
 
 function ShareCardComponent(props) {
@@ -15,9 +14,12 @@ function ShareCardComponent(props) {
     
 
     useEffect(()=>{
-        QRCode.toCanvas(document.getElementById('qrCodeCanvas') ,`https://share-card.netlify.app/viewcard/${data?.id}`, { errorCorrectionLevel: 'H' }, function (err, canvas) {
-            if (err) throw err
-          })
+    
+        const qrCodeData = `https://share-card.netlify.app/viewcard/${data?.id}`;
+        const matrix = QrCode.generate(qrCodeData);
+        const uri = QrCode.render('svg-uri', matrix);
+        document.getElementById('qrCodeImg').src = uri;
+    
     },[])
 
     return ( 
@@ -35,9 +37,9 @@ function ShareCardComponent(props) {
 
 
                 <div id="qrCode" className={styles.qrCode}>
-                    <canvas id="qrCodeCanvas">
+                    <img id="qrCodeImg">
 
-                    </canvas>
+                    </img>
                 </div>
 
 
