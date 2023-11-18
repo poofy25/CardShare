@@ -2,6 +2,8 @@ html,body,.root{
     padding: 0;
     margin: 0;
     background-color: #f7f7f7;
+    width: 100%;
+    min-height: 100vh;
 }
 body{
     margin-bottom: 15vh;

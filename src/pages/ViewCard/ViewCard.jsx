@@ -68,7 +68,7 @@ function ViewCardPage() {
         newLink.download = contactData.name + ".vcf";
         newLink.textContent = contactData.name;
         newLink.href = url;
-        // newLink.click();
+        newLink.click();
 
     }
    }
@@ -140,7 +140,7 @@ function ViewCardPage() {
 
     useEffect(()=>{
       if(contactData){
-      document.getElementById('saveToContactsBtn').click()
+      // document.getElementById('saveToContactsBtn').click()
       }
     },[contactData])
 

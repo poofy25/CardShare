@@ -1,0 +1,43 @@
+.contactsPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.searchSection{
+width: 100%;
+height: 50px;
+padding-left: 5vw;
+padding-right: 5vw;
+box-sizing: border-box;
+display: flex;
+margin: 1rem;
+}
+.searchSection > input {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 99px;
+    border: 1px solid gray;
+}
+.searchSection > button {
+    height: 100%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    margin-left: 1rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+  
+}
+.searchSection > button > img {
+    width: 90%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

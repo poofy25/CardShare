@@ -67,10 +67,11 @@ function CardsPage() {
 
     return (
     <section className={styles.cardPage}>
-        <div className={styles.cardsPageHeader}>CARDS PAGE</div>
-        <MiniCardPopUp data={selectedCard} setSelectedCard={setSelectedCard} setCardDocs={setCardDocs}/>
         {(!user && !loading) ? <SignedOutComponent/> : 
         <>
+        <div className={styles.cardsPageHeader}>CARDS PAGE</div>
+        <MiniCardPopUp data={selectedCard} setSelectedCard={setSelectedCard} setCardDocs={setCardDocs}/>
+        
 
             <div className={styles.cardsContainer}>
                 <button className={styles.createCardBtn} onClick={()=>{navigateTo('/createcard')}}>+ <br/> Create Card</button>

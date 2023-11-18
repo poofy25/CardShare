@@ -23,11 +23,11 @@ function ProfilePage() {
 
     return ( 
      <>
-   <h1>YOUR PROFILE</h1>
+   
 
    {(!user && !loading) ? <SignedOutComponent/> :
      <>
-
+         <h1>YOUR PROFILE</h1>
         <div>{location.state?.error}</div>
         <h2>Name : {user?.displayName}</h2>
         <p>Email : {user?.email}</p>

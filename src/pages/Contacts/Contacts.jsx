@@ -1,8 +1,15 @@
 import styles from "./contacts.module.css"
 import AllContacts from "./components/AllContacts";
 import ContactRequests from "./components/ContactRequests";
-import { useState } from "react";
+import ContactsHeader from "./components/ContactsHeader";
+import SignedOutComponent from "../../components/SignedOut/SignedOut";
 
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase/firebase";
+
+
+import requestIcon from '/src/assets/icons/requestIcon.png'
 
 const navComponents = {
     allContacts:(<AllContacts/>),
@@ -16,6 +23,9 @@ const navComponents = {
 
 function ContactsPage() {
 
+
+
+    const [user , loading] = useAuthState(auth);
     const [activeNavComponent , setActiveNavComponent] = useState(navComponents.allContacts)
     const changeActiveComponent = (component)=>{
        //changes active component
@@ -26,24 +36,26 @@ function ContactsPage() {
 
 
     return ( 
-        <h1>
-            CONTACTS PAGE
-            <div>
-                <button onClick={(e)=>changeActiveComponent(navComponents.allContacts)}>Contacts</button>
-                <button onClick={(e)=>changeActiveComponent(navComponents.contactrequests)}>Requests</button>
-            </div>
+        <section className={styles.contactsPage}>
+         {(!user && !loading) ? <SignedOutComponent/> :
+         <>
+               <ContactsHeader/>
+               <section className={styles.searchSection}>
+                  <input type="text" placeholder="Search names, companies and more..."/>
+                  <button onClick={(e)=>changeActiveComponent(navComponents.contactrequests)}><img src={requestIcon}/></button>
+               </section>
 
-            <>
-            <AllContacts
-               status={activeNavComponent.type.name === navComponents.allContacts.type.name ? 'active' : 'inactive'}
-            />
-            <ContactRequests  
-               status={activeNavComponent.type.name === navComponents.contactrequests.type.name ? 'active' : 'inactive'}               
-            />
+               <>
+                  <AllContacts
+                     status={activeNavComponent.type.name === navComponents.allContacts.type.name ? 'active' : 'inactive'}
+                  />
+                  <ContactRequests  
+                     status={activeNavComponent.type.name === navComponents.contactrequests.type.name ? 'active' : 'inactive'}               
+                  />
+               </>
           </>
-
-
-        </h1>
+         }
+        </section>
      );
 }
 
