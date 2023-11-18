@@ -62,11 +62,11 @@ function ViewCardPage() {
     if(contactData!==null){
     var vCard = createVCard(contactData , imgBase64)
    
-        var blob = new Blob([vCard], { type: "text/vcard" });
+        var blob = new Blob([vCard], { type: "text/vcard;charset=utf-8" });
         var url = URL.createObjectURL(blob);
         const newLink = document.createElement('a');
-        newLink.download = contactData.name + ".vcf";
-        newLink.textContent = contactData.name;
+        newLink.download = generalData.fullname + ".vcf";
+        newLink.textContent = generalData.fullname;
         newLink.href = url;
         newLink.click();
 
