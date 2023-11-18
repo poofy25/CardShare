@@ -36,7 +36,7 @@ const fieldsData = data.fieldsData
 
 
 
-    var vcard = "BEGIN:VCARD"
+    var vcard = "BEGIN:VCARD\nVERSION:4.0"
     
 
 
