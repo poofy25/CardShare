@@ -8,16 +8,16 @@ const vCardCode = {
     headline:'\nNOTE:',
     photo:'\nPHOTO;TYPE=JPEG;ENCODING=B:',
     Email:'\nEMAIL:',
-    Instagram:'\nURL;TYPE=INSTAGRAM',
-    TikTok:'\nURL;TYPE=TIKTOK',
+    Instagram:'\nURL;TYPE=INSTAGRAM:',
+    TikTok:'\nURL;TYPE=TIKTOK:',
     Website:'\nURL;TYPE=WEBSITE:',
-    Facebook:'\nURL;TYPE=FACEBOOK',
-    Twitter:'\nURL;TYPE=TWITTER',
-    LinkedIn:'\nURL;TYPE=LINKEDIN',
-    Telegram:'\nURL;TYPE=TELEGRAM',
-    Whatsapp:'\nURL;TYPE=WHATSAPP',
-    Discord:'\nURL;TYPE=DISCORD',
-    Github:'\nURL;TYPE=GITHUB'
+    Facebook:'\nURL;TYPE=FACEBOOK:',
+    Twitter:'\nURL;TYPE=TWITTER:',
+    LinkedIn:'\nURL;TYPE=LINKEDIN:',
+    Telegram:'\nURL;TYPE=TELEGRAM:',
+    Whatsapp:'\nURL;TYPE=WHATSAPP:',
+    Discord:'\nURL;TYPE=DISCORD:',
+    Github:'\nURL;TYPE=GITHUB:'
 }
 
 
