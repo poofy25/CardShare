@@ -55,6 +55,7 @@ const fieldsData = data.fieldsData
      })}
     
      vcard = vcard + vCardCode.photo + imgBase64
+     vcard = vcard + `\nN:${generalData.fullname.split(" ")[0]};${generalData.fullname.split(" ")[1]};`
      vcard = vcard + "\nEND:VCARD";
 
    return vcard
