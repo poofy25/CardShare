@@ -14,13 +14,13 @@ import shareIcon from '/src/assets/icons/shareIcon.png'
 import qrIcon from '/src/assets/icons/qrIcon.png'
 import deleteIcon from '/src/assets/icons/deleteIcon.png'
 
-import QRCode from 'qrcodejs';
 
 function MiniCardPopUp(props) {
 
     const navigateTo = useNavigate()
     if(props.data.data){
-        console.log(props.data)
+        const sharingComponentStatus = props.sharingComponentStatus
+        const setSharingComponentStatus = props.setSharingComponentStatus
     const selectedCardData = props.data.data.cardData
     const isActive = props.data.active === true
     const setSelectedCard = props.setSelectedCard
@@ -90,7 +90,7 @@ function MiniCardPopUp(props) {
                     <p>View your card</p>
                     
                     </button>
-                <button onClick={()=>{navigator.clipboard.writeText(`https://share-card.netlify.app/viewcard/${props.data.id}`)}}>
+                <button onClick={()=>{setSharingComponentStatus({active:true,card:cardData})}}>
                     <img src={shareIcon}/>
                     <h1>Share Card</h1> 
                     <p>Share your card</p>
@@ -105,7 +105,6 @@ function MiniCardPopUp(props) {
             </section>
 
 
-                {/* <button onClick={deleteCard} className={styles.deleteCardBtn}><img src={deleteIcon}/>Delete Card</button> */}
 
 
 

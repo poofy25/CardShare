@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import MiniCardComponent from "../../components/MiniCard/MiniCard";
 import { useState } from "react";
 
+import ShareCardComponent from '../../components/ShareCard/ShareCard';
 
 function CardsPage() {
 
@@ -20,7 +21,7 @@ function CardsPage() {
     const [user , loading] = useAuthState(auth);
     const [cardDocs , setCardDocs] = useState([])
     const [selectedCard , setSelectedCard] = useState({active:false})
-    
+    const [sharingComponentStatus , setSharingComponentStatus] = useState({active:false , card:null })
 
     useEffect(()=>{
         //Fetching all the cards that matches the uid of the user from firestoree
@@ -69,9 +70,9 @@ function CardsPage() {
     <section className={styles.cardPage}>
         {(!user && !loading) ? <SignedOutComponent/> : 
         <>
-        <div className={styles.cardsPageHeader}>CARDS PAGE</div>
-        <MiniCardPopUp data={selectedCard} setSelectedCard={setSelectedCard} setCardDocs={setCardDocs}/>
-        
+            <div className={styles.cardsPageHeader}>CARDS PAGE</div>
+            <MiniCardPopUp data={selectedCard} setSelectedCard={setSelectedCard} setCardDocs={setCardDocs} sharingComponentStatus={sharingComponentStatus} setSharingComponentStatus={setSharingComponentStatus}/>
+            <ShareCardComponent sharingComponentStatus={sharingComponentStatus} setSharingComponentStatus={setSharingComponentStatus}/>
 
             <div className={styles.cardsContainer}>
                 <button className={styles.createCardBtn} onClick={()=>{navigateTo('/createcard')}}>+ <br/> Create Card</button>
@@ -82,7 +83,7 @@ function CardsPage() {
                     )
                 })}
             </div>
-
+           
         </>
         }
 
