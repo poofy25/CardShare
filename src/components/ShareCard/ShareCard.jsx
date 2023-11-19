@@ -10,17 +10,17 @@ function ShareCardComponent(props) {
     const setStatus = props.setSharingComponentStatus
     const isActive = status.active === true
     const data = status.card
-    console.log(status)
+    console.log(status , data)
     
 
     useEffect(()=>{
-    
+        console.log(data?.id)
         const qrCodeData = `https://share-card.netlify.app/viewcard/${data?.id}`;
         const matrix = QrCode.generate(qrCodeData);
         const uri = QrCode.render('svg-uri', matrix);
         document.getElementById('qrCodeImg').src = uri;
     
-    },[])
+    },[status])
 
     return ( 
         <div className={`${styles.shareCard} ${isActive && styles.active}`}>
