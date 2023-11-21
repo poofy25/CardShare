@@ -74,6 +74,8 @@ function ShareCardComponent(props) {
                     Copy Card Link
                 </button>
 
+                <a className={styles.downloadQRCode} href={document.getElementById('qrCodeImg').src} download="CardShareQRCode.svg">Download QR Code</a>
+
             </section>
         </div>
      );
