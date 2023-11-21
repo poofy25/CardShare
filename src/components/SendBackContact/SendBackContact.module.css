@@ -36,6 +36,15 @@
     aspect-ratio: 1;
     position: absolute;
 }
+.xBtn{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    aspect-ratio: 1;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+}
 .formSection > h1{
     text-align: center;
     font-family: sans-serif;

@@ -45,6 +45,7 @@ function SendBackContact(props) {
     <div className={styles.container} onClick={(e)=>{if(false)setStatus(false)}} >
         <section className={styles.formSection}>
             <img src={props.imgUrl}/>    
+            <button className={styles.xBtn} onClick={()=>{setStatus(false)}}>x</button>
             <h1>Share your contact info back with <br/> {props.data.cardData.generalData.fullname}</h1>
             <span></span>
             <form id="sendBackContactForm" onSubmit={formOnSubmit}>

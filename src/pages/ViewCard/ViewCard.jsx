@@ -155,7 +155,7 @@ function ViewCardPage() {
             <div className={styles.viewCardPage}>
               <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button>
               <img src={imgUrl} className={styles.image}/>
-              {/* <SendBackContactBtn data={cardData} imgUrl={imgUrl}/> */}
+              <SendBackContactBtn data={cardData} status={sendBackContactStatus} setStatus={setSendBackContactStatus}/>
               <SendBackContact status={sendBackContactStatus} setStatus={setSendBackContactStatus} data={cardData} imgUrl={imgUrl}/>
               <span className={styles.cardHead}>
                 <h1>{generalData.fullname}</h1>
