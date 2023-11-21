@@ -11,7 +11,7 @@
 
 
 .formSection{
-    background-color: #E5CFF7;
+    background-color: #f7f7f7;
     position: fixed;
     width: 90%;
     display: flex;
@@ -70,7 +70,7 @@
     z-index: 2;
     font-weight: bold;
     font-family: sans-serif;
-    background-color:#E5CFF7;
+    background-color:#f7f7f7;
 }
 .formSection > form > label > input {
     display: flex;

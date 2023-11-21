@@ -12,6 +12,8 @@ import fieldValues from '../../functions/fields';
 
 import LoadingComponent from '../../components/Loading/Loading';
 import SendBackContactBtn from '../../components/SendBackContact/SendBackContactBtn';
+import SendBackContact from '../../components/SendBackContact/SendBackContact';
+
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
 import emailIcon from '/src/assets/icons/emailIcon.png'
@@ -48,13 +50,17 @@ function ViewCardPage() {
     const params = useParams()
     const [cardData , setCardData] = useState(null)
     const [loading,setLoading] = useState(true)
+
     const generalData = cardData?.cardData?.generalData
     const displayData = cardData?.cardData?.displayData
     const fieldsData = cardData?.cardData?.fieldsData
+
     const [imgRef , setImgRef] = useState(null)
     const [imgUrl , setImgUrl] = useState(null)
     const [imgBase64 , setImgBase64] = useState(null)
     const [contactData , setContactData] = useState(null)
+
+    const [sendBackContactStatus , setSendBackContactStatus] = useState(true)
 
 
    const saveToContacts = ()=>{
@@ -149,7 +155,8 @@ function ViewCardPage() {
             <div className={styles.viewCardPage}>
               <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button>
               <img src={imgUrl} className={styles.image}/>
-              <SendBackContactBtn data={cardData} imgUrl={imgUrl}/>
+              {/* <SendBackContactBtn data={cardData} imgUrl={imgUrl}/> */}
+              <SendBackContact status={sendBackContactStatus} setStatus={setSendBackContactStatus} data={cardData} imgUrl={imgUrl}/>
               <span className={styles.cardHead}>
                 <h1>{generalData.fullname}</h1>
                 <h2>{generalData.title}</h2>

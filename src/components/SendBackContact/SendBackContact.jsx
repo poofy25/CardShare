@@ -15,6 +15,9 @@ function SendBackContact(props) {
         phonenumber:null
     })
 
+    const onSendBtn = ()=>{
+        document.getElementById('sendBackContactForm').requestSubmit();
+    }
 
     const formOnSubmit = (e)=>{
         e.preventDefault()
@@ -27,8 +30,10 @@ function SendBackContact(props) {
             const docRef = await addDoc(collection(db, "contactsrequests"), {
             requestData:formData , userId:props.data.userId
             });
-         console.log(docRef.id)
-         }
+        console.log(docRef.id)
+        setStatus(false)
+        document.getElementById('saveToContactsBtn')?.click()
+        }
          sendData()
     }
 
@@ -37,7 +42,7 @@ function SendBackContact(props) {
     
     return ( 
 
-    <div className={styles.container} onClick={(e)=>{if(e.target === e.currentTarget)setStatus(false)}} >
+    <div className={styles.container} onClick={(e)=>{if(false)setStatus(false)}} >
         <section className={styles.formSection}>
             <img src={props.imgUrl}/>    
             <h1>Share your contact info back with <br/> {props.data.cardData.generalData.fullname}</h1>
@@ -63,7 +68,7 @@ function SendBackContact(props) {
 
 
             </form>
-            <button  className={`${styles.shareBackBtn} ${document.getElementById('sendBackContactForm')?.checkValidity() && styles.valid}`} onClick={()=>{document.getElementById('sendBackContactForm').requestSubmit();}}>Share back contact</button>
+            <button  className={`${styles.shareBackBtn} ${document.getElementById('sendBackContactForm')?.checkValidity() && styles.valid}`} onClick={onSendBtn}>Share back contact</button>
         </section>
     </div>
 

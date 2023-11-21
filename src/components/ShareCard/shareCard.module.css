@@ -26,6 +26,7 @@ display: none;
     justify-content: start;
     padding: 1rem;
     box-sizing: border-box;
+    overflow: auto;
 }
 
 
