@@ -46,7 +46,7 @@ function ShareCardComponent(props) {
     },[status])
 
     return ( 
-        <div className={`${styles.shareCard} ${isActive && styles.active}`}>
+        <div className={`${styles.shareCard} ${isActive && styles.active}`} onClick={(e)=>{if(e.target === e.currentTarget){setStatus({active:false , card:null})}}}>
             <section className={styles.shareCardSection}>
 
 
