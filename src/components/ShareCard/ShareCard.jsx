@@ -13,6 +13,29 @@ function ShareCardComponent(props) {
     console.log(status , data)
     
 
+    const copyLinkBtnClick = (e)=>{
+
+        const button = e.target
+        button.disabled = true;
+
+        button.classList.add(styles.copiedAnimation);
+         e.target.textContent = 'Link Copied!'
+        navigator.clipboard.writeText(`https://share-card.netlify.app/viewcard/${data?.id}`)
+        setTimeout(() => {
+        button.disabled = false;
+         e.target.textContent = 'Copy Card Link'
+        button.classList.remove(styles.copiedAnimation);
+        }, 2000);
+    }
+
+
+
+
+
+
+
+
+
     useEffect(()=>{
         console.log(data?.id)
         const qrCodeData = `https://share-card.netlify.app/viewcard/${data?.id}`;
@@ -46,8 +69,10 @@ function ShareCardComponent(props) {
 
 
                 <button className={styles.copyLinkBtn}
-                onClick={()=>{navigator.clipboard.writeText(`https://share-card.netlify.app/viewcard/${data?.id}`)}}
-                >Copy Card Link</button>
+                    onClick={copyLinkBtnClick}
+                >
+                    Copy Card Link
+                </button>
 
             </section>
         </div>
