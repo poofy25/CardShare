@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "colorthief": "^2.4.0",
     "firebase": "^10.5.0",
     "flowbite-react": "^0.6.4",
+    "get-contrast": "^3.0.0",
+    "grade-js": "^1.0.10",
     "is-url": "^1.2.4",
     "qrcodejs": "github:danielgjackson/qrcodejs",
     "react": "^18.2.0",

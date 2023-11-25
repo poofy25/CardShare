@@ -10,9 +10,17 @@ import { useNavigate } from 'react-router-dom';
 import createVCard from '../../functions/createVCard';
 import fieldValues from '../../functions/fields';
 
+import ColorThief from 'colorthief'
+import getContrast from 'get-contrast'
+
 import LoadingComponent from '../../components/Loading/Loading';
 import SendBackContactBtn from '../../components/SendBackContact/SendBackContactBtn';
 import SendBackContact from '../../components/SendBackContact/SendBackContact';
+import SaveContactBtn from '../../components/SaveContactBtn/SaveContactBtn';
+
+
+import shareIcon from '/src/assets/icons/shareIcon.svg'
+import arrowLeftIcon from '/src/assets/icons/arrowLeftIcon.svg'
 
 
 import phoneIcon from '/src/assets/icons/phoneIcon.png'
@@ -55,9 +63,11 @@ function ViewCardPage() {
     const displayData = cardData?.cardData?.displayData
     const fieldsData = cardData?.cardData?.fieldsData
 
+    const [imgColor , setImageColor] = useState('rgb(0,0,0)')
     const [imgRef , setImgRef] = useState(null)
     const [imgUrl , setImgUrl] = useState(null)
     const [imgBase64 , setImgBase64] = useState(null)
+
     const [contactData , setContactData] = useState(null)
 
     const [sendBackContactStatus , setSendBackContactStatus] = useState(true)
@@ -83,7 +93,7 @@ function ViewCardPage() {
 
     //Fethces the card data from the database
     useEffect(()=>{
-
+        
         async function getDataFromId (){
           setLoading(true)
             const docRef = doc(db, "cards", params.id);
@@ -96,7 +106,7 @@ function ViewCardPage() {
                 setLoading(false)
               }
         }
-       getDataFromId()
+        getDataFromId()
     },[])
     //Fetches image reference from storage after getting the card data
     useEffect(()=>{
@@ -123,6 +133,28 @@ function ViewCardPage() {
     useEffect(()=>{
 
      if(imgUrl!==null){
+
+      const colorThief = new ColorThief();
+      const img = document.querySelector(`.${styles.profilePicture}`);
+      img.crossOrigin = "Anonymous";
+
+      if (img.complete) {
+        const colorValues = colorThief.getColor(img ,[5])
+        const rgbValue = `rgb(${colorValues[0]}, ${colorValues[1]},${colorValues[2]})`
+        setImageColor(rgbValue)
+      } else {
+        img.addEventListener('load', function() {
+          const colorValues = colorThief.getColor(img ,[5])
+          const rgbValue = `rgb(${colorValues[0]}, ${colorValues[1]},${colorValues[2]})`
+          setImageColor(rgbValue)
+        });
+      }
+
+
+
+
+
+
         var base64Img 
         async function getBase64(){
            await getBase64FromUrl(imgUrl).then((result)=>{
@@ -134,6 +166,27 @@ function ViewCardPage() {
      }
 
     },[imgUrl])
+
+    useEffect(()=>{
+      if(imgColor){
+        const isAccessible = getContrast.isAccessible(imgColor , 'rgb(255,255,255)')
+        console.log(imgColor , isAccessible)
+        const displaySection =  document.querySelector(`.${styles.displaySection}`)
+
+        if(displaySection){
+          displaySection.style.backgroundColor = imgColor
+
+          if(isAccessible){
+            displaySection.style.color = 'rgba(255,255,255,0.9)'
+          }else{
+            displaySection.style.color = 'rgba(0,0,0,0.9)'
+          }
+      }
+      }
+      
+    },[imgColor])
+
+
     //Sets contactData 
     useEffect(()=>{
       if(imgUrl!==null){
@@ -153,15 +206,26 @@ function ViewCardPage() {
     if(cardData){
         return (
             <div className={styles.viewCardPage}>
-              <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button>
-              <img src={imgUrl} className={styles.image}/>
-              <SendBackContactBtn data={cardData} status={sendBackContactStatus} setStatus={setSendBackContactStatus}/>
-              <SendBackContact status={sendBackContactStatus} setStatus={setSendBackContactStatus} data={cardData} imgUrl={imgUrl}/>
-              <span className={styles.cardHead}>
+              
+              {/* <button className={styles.closeBtn} onClick={()=>{navigateTo('/cards')}}>X</button> */}
+              <section className={styles.displaySection}>
+                <div className={styles.displaySectionHeader}>
+                  <button onClick={()=>{navigateTo('/cards')}}><img src={arrowLeftIcon}/></button>
+                  <button><img src={shareIcon}/></button>
+                </div>
+                <img src={imgUrl} className={styles.profilePicture}/>
+                
+                <h3>{generalData.title}{generalData.company && ` · ${generalData.company}`}</h3>
                 <h1>{generalData.fullname}</h1>
-                <h2>{generalData.title}</h2>
-                <h2 style={{fontWeight:400}}>{generalData.company}</h2>
-              </span>
+
+                <SaveContactBtn  saveToContacts={saveToContacts}  color={imgColor}/>
+                <SendBackContactBtn color={imgColor} data={cardData} status={sendBackContactStatus} setStatus={setSendBackContactStatus}/>
+                
+              </section>
+              
+              
+              <SendBackContact status={sendBackContactStatus} setStatus={setSendBackContactStatus} data={cardData} imgUrl={imgUrl}/>
+        
 
               {generalData.headline && <h3 className={styles.headline}>{generalData.headline}</h3> }
 
@@ -176,7 +240,7 @@ function ViewCardPage() {
         })}
               </span>
               <span className={styles.saveBtnWrapper}>
-              <button id='saveToContactsBtn' onClick={saveToContacts} className={styles.saveBtn}>SAVE TO CONTACTS</button>
+              
               </span>
             </div>
         )

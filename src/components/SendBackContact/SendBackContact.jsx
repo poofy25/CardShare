@@ -30,7 +30,6 @@ function SendBackContact(props) {
             const docRef = await addDoc(collection(db, "contactsrequests"), {
             requestData:formData , userId:props.data.userId
             });
-        console.log(docRef.id)
         setStatus(false)
         document.getElementById('saveToContactsBtn')?.click()
         }

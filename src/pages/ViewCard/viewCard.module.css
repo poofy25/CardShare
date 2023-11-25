@@ -30,32 +30,60 @@ z-index: 99;
 }
 
 
-.image{
-    width: 100vw;
-    height: 40vh;
-    object-fit: cover;
+.displaySection{
+overflow: hidden;
+width: 100%;
+position: relative;
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: start;
+padding: 2rem;
+box-sizing: border-box;
 }
-
-
-.cardHead{
+.displaySectionHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.displaySectionHeader > button {
     background-color: transparent;
-    box-sizing: border-box;
-    margin: 1rem;
-    margin-left: 5%;
-    padding-left: 3vw;
-    margin-right: auto;
-   
-    border-left:3px black dashed;
+    border: none;
 }
-.cardHead > h2 ,h1 {
-    margin: 0.5rem;
+.displaySectionHeader > button > img{
+   width: 7.5vw;
+   aspect-ratio: 1;
+   filter: invert();
+   object-fit: cover;
+}
+.profilePicture{
+    z-index: 3;
+    position: relative;
+    object-fit: cover;
+    border-radius: 9999px;
+    width: 75%;
+    aspect-ratio: 1;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 32px 8px rgba(0,0,0,0.1);
+}
+.displaySection > h3{
+    margin: 0;
+    font-weight: 600;
+    max-width: 100%;
+    text-align: center;
+}
+.displaySection > h1 {
+    margin: 1rem;
+    font-size: 2rem;
 }
 
-.headline{
-    align-self: flex-start;
-    margin-left: 5%;
-    font-weight: 300;
-}
+
+
+
+
+
 
 
 
@@ -91,32 +119,15 @@ a {
 }
 
 
-.saveBtnWrapper{
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    margin-top: auto;
-    background-color: #E5CFF7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    z-index: 99;
-}
-
 .saveBtn{
-    width: 80%;
-    height: 75%;
-    z-index: 99;
-    margin-bottom: 0%;
-    background-color: #5B0888;
-    border: none;
-    color: white;
-    border-radius: 8px;
+    padding: 1.25rem;
     font-weight: bold;
-    font-family:monospace;
-    font-size: 1.5rem;
-    box-shadow: 0px 4px 16px 8px rgba(0,0,0,0.25);
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 90%;
+    font-size: 1rem;
+    color: #f7f7f7;
+    background-color:  #5B0888;
+    border: none;
+    box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.25);
 }
