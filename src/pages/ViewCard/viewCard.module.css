@@ -52,7 +52,7 @@ box-sizing: border-box;
     border: none;
 }
 .displaySectionHeader > button > img{
-   width: 7.5vw;
+   width: 5vw;
    aspect-ratio: 1;
    filter: invert();
    object-fit: cover;
