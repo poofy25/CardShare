@@ -38,7 +38,7 @@ function SendBackContactBtn(props) {
 
     return ( 
         <>
-            <button style={{backgroundColor:props.color , borderColor:lighterColor}} onClick={()=>{props.setStatus(true)}} className={styles.btn}> Send back contact </button>
+            <button style={{backgroundColor:props.color , borderColor:lighterColor}} onClick={()=>{props.setStatus(true)}} className={styles.btn}> Send back Contact </button>
             
         </>
      );
