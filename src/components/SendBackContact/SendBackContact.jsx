@@ -7,6 +7,7 @@ function SendBackContact(props) {
 
     const status = props.status
     const setStatus = props.setStatus
+    const colorPallete= props.colorPallete
     if(status){
     const [formData, setFormData] = useState({
         fullname:null,
@@ -42,7 +43,7 @@ function SendBackContact(props) {
     return ( 
 
     <div className={styles.container} onClick={(e)=>{if(false)setStatus(false)}} >
-        <section className={styles.formSection}>
+        <section className={styles.formSection} style={{backgroundColor:colorPallete.backgroundLightColor}}>
             <img src={props.imgUrl}/>    
             <button className={styles.xBtn} onClick={()=>{setStatus(false)}}>x</button>
             <h1>Share your contact info back with <br/> {props.data.cardData.generalData.fullname}</h1>
@@ -51,19 +52,19 @@ function SendBackContact(props) {
 
                 <label>
                     <p>Name *</p>
-                    <input type='text' required onChange={(e)=>setFormData(current=>{return{...current , fullname:e.target.value }})}/>
+                    <input type='text' placeholder='Your name' required onChange={(e)=>setFormData(current=>{return{...current , fullname:e.target.value }})}/>
                 </label>
                 <label>
                     <p>Job title</p>
-                    <input type='text' onChange={(e)=>setFormData(current=>{return{...current , title:e.target.value }})} />
+                    <input type='text' placeholder='Your job title' onChange={(e)=>setFormData(current=>{return{...current , title:e.target.value }})} />
                 </label>
                 <label>
                     <p>Email *</p>
-                    <input type='email' required onChange={(e)=>setFormData(current=>{return{...current , email:e.target.value }})}/>
+                    <input type='email' placeholder='Your email' required onChange={(e)=>setFormData(current=>{return{...current , email:e.target.value }})}/>
                 </label>
                 <label>
                     <p>Phone Number</p>
-                    <input type='phone' onChange={(e)=>setFormData(current=>{return{...current , phonenumber:e.target.value }})}/>
+                    <input type='phone' placeholder='Your phone number' onChange={(e)=>setFormData(current=>{return{...current , phonenumber:e.target.value }})}/>
                 </label>
 
 

@@ -1,18 +1,15 @@
 .viewCardPage{
 background-color: #f7f7f7;
 width: 100vw;
-min-height: 100vh;
 position: fixed;
 z-index: 1;
 display: flex;
 align-items: center;
 justify-content: start;
 flex-direction: column;
-margin-bottom: 15vh;
 position: relative;
 z-index: 99;
 }
-
 
 
 .displaySection{
@@ -37,7 +34,7 @@ box-sizing: border-box;
     border: none;
 }
 .displaySectionHeader > button > img{
-   width: 5vw;
+   width: 1.5rem;
    aspect-ratio: 1;
    filter: invert();
    object-fit: cover;
@@ -55,65 +52,87 @@ box-sizing: border-box;
 }
 .displaySection > h3{
     margin: 0;
+    font-size: 1rem;
     font-weight: 500;
     max-width: 100%;
+    opacity: 0.9;
     text-align: center;
 }
 .displaySection > h1 {
     margin: 1rem;
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 600;
+}
+.displaySection > p {
+    text-align: center;
+    opacity: 0.9;
+    margin-top: 0;
 }
 
 
 
+.contactSection{
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
 
-
-
-
-
-
-.contactData{
-
-background-color: transparent;
+.contactDataField {
+    width: 100%;
+}
+.contactDataField > p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.contactDataField > a{
+border: 2px solid black;
+border-radius: 8px;
 width: 100%;
-padding-left: 5%;
-box-sizing: border-box;
-margin: 0.5rem;
 display: flex;
-flex-direction: column;
-
+align-items: center;
+padding: 0.5rem;
+padding-left: 1rem;
+box-sizing: border-box;
+font-weight: 600;
+margin-bottom: 1rem;
+text-decoration: none;
+color: rgba(0,0,0,0.8);
 }
-.contactData > a {
-    font-size: 1.25rem;
-    margin-top:0.5rem;
-    margin-bottom:0.5rem;
-    font-family: sans-serif;
+.contactDataField > a > img{
+ height: 2rem;
+ aspect-ratio: 1;
+ margin-right: 1rem;
+}
+
+
+.otherPlatformsSection{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 5%;
 }
-.contactData > a > img {
-    background-color: transparent;
-    height: 4vh;
+.otherPlatformsSection > h1 {
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.8);
+}
+.otherPlatformsSection > a {
+width: 20%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-decoration: none;
+color: rgba(0,0,0,0.8);
+margin-bottom: 1rem;
+font-weight: 600;
+}
+.otherPlatformsSection > a > img {
+    width: 100%;
     aspect-ratio: 1;
-    margin-right: 1rem;
-}
-a {
-    text-decoration: none;
-    color: #5B0888;
-    font-weight: bold;
-}
-
-
-.saveBtn{
-    padding: 1.25rem;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 1px solid black;
-    width: 90%;
-    font-size: 1rem;
-    color: #f7f7f7;
-    background-color:  #5B0888;
-    border: none;
-    box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.25);
+    margin-bottom: 1rem;
 }

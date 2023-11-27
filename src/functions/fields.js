@@ -1,20 +1,20 @@
-import phoneIcon from '/src/assets/icons/phoneIcon.png'
-import emailIcon from '/src/assets/icons/emailIcon.png'
-import websiteIcon from '/src/assets/icons/websiteIcon.png'
-import telegramIcon from '/src/assets/icons/telegramIcon.png'
-import facebookIcon from '/src/assets/icons/facebookIcon.png'
-import instagramIcon from '/src/assets/icons/instagramIcon.png'
-import githubIcon from '/src/assets/icons/githubIcon.png'
-import linkedInIcon from '/src/assets/icons/linkedInIcon.png'
-import tikTokIcon from '/src/assets/icons/tikTokIcon.png'
-import twitterIcon from '/src/assets/icons/twitterIcon.png'
-import discordIcon from '/src/assets/icons/discordIcon.png'
-import whatsappIcon from '/src/assets/icons/whatsappIcon.png'
+import phoneIcon from '/src/assets/svgIcons/phone.svg'
+import gmailIcon from '/src/assets/svgIcons/gmail.svg'
+import websiteIcon from '/src/assets/svgIcons/website.svg'
+import telegramIcon from '/src/assets/svgIcons/telegram.svg'
+import facebookIcon from '/src/assets/svgIcons/facebook.svg'
+import instagramIcon from '/src/assets/svgIcons/instagram.svg'
+import githubIcon from '/src/assets/svgIcons/github.svg'
+import linkedInIcon from '/src/assets/svgIcons/linkedIn.svg'
+import tikTokIcon from '/src/assets/svgIcons/tikTok.svg'
+import twitterIcon from '/src/assets/svgIcons/twitter.svg'
+import discordIcon from '/src/assets/svgIcons/discord.svg'
+
 
 const fieldValues = {
 
    Email:{
-    icon:emailIcon,
+    icon:gmailIcon,
     defaultLink:''
    },
    Instagram:{
@@ -44,10 +44,6 @@ const fieldValues = {
    Discord:{
     icon:discordIcon,
     defaultLink:'https://discord.com/'
-   },
-   Whatsapp:{
-    icon:whatsappIcon,
-    defaultLink:'https://wa.me/'
    },
    Website:{
     icon:websiteIcon,

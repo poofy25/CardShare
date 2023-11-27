@@ -5,7 +5,7 @@
    background-color: rgba(0,0,0,0.5);
    z-index: 9999; 
    display: flex;
-   align-items: center;
+   align-items: end;
    justify-content: center;
 }
 
@@ -13,7 +13,7 @@
 .formSection{
     background-color: #f7f7f7;
     position: fixed;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +21,7 @@
 
     z-index: 999;
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-sizing: border-box;
     padding-top: 15vw;
 
@@ -34,6 +34,7 @@
     transform: translateY(-50%);
     object-fit: cover;
     aspect-ratio: 1;
+    box-shadow: 0px 0px 32px 4px rgba(0,0,0,0.5);
     position: absolute;
 }
 .xBtn{
@@ -48,12 +49,13 @@
 .formSection > h1{
     text-align: center;
     font-family: sans-serif;
+    margin: 1rem 0px 0px 0px;
 }
 .formSection > span{
     width: 100%;
     height: 1px;
     background-color: rgba(0,0,0,0.5);
-    margin: 1rem;
+    margin: 2rem;
     box-sizing: border-box;
 }
 .formSection > form {
@@ -67,44 +69,44 @@
     flex-direction: column;
     position: relative;
     width: 100%;
-    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 .formSection > form > label > p {
-    position: absolute;
-    left: 5%;
-    top: 0;
-    margin: 0;
-    transform: translateY(-50%);
+    
     z-index: 2;
     font-weight: bold;
     font-family: sans-serif;
-    background-color:#f7f7f7;
+    background-color:transparent;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 .formSection > form > label > input {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding:  0.5rem 5% 0.5rem 5%;
+    padding:  0.75rem 1rem 0.75rem 1rem;
     background-color: transparent;
     border: 1px solid gray;
     border-radius: 4px;
-    font-size: 1.25rem;
+    font-size: 1rem;
     box-sizing: border-box;
   
 }
 
 .shareBackBtn{
-    width: 100%;
-    padding: 1rem 0.5rem 1rem 0.5rem;
-    border-radius: 999px;
-    border: none;
-    background-color: gray;
-    color: #f7f7f7;
-    font-size: 1.25rem;
-    font-weight: bold;
     margin: 1rem;
+    margin-bottom: 0;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid gray;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.25rem;
+    background-color: transparent;
 }
 .shareBackBtn.valid{
-    background-color:  #5B0888;
+    background-color:  rgba(0,0,0,0.8);
+    color: rgba(255,255,255,0.8);
+    box-shadow: 0px 8px 16px 4px rgba(0,0,0,0.25);
 }
