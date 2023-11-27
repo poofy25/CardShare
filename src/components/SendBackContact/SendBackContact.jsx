@@ -46,10 +46,10 @@ function SendBackContact(props) {
         <section className={styles.formSection} style={{backgroundColor:colorPallete.backgroundLightColor}}>
             <img src={props.imgUrl}/>    
             <button className={styles.xBtn} onClick={()=>{setStatus(false)}}>x</button>
+           
+            <form id="sendBackContactForm" className={styles.form} onSubmit={formOnSubmit}>
             <h1>Share your contact info back with <br/> {props.data.cardData.generalData.fullname}</h1>
             <span></span>
-            <form id="sendBackContactForm" onSubmit={formOnSubmit}>
-
                 <label>
                     <p>Name *</p>
                     <input type='text' placeholder='Your name' required onChange={(e)=>setFormData(current=>{return{...current , fullname:e.target.value }})}/>
