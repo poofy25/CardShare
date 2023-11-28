@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-self: center;
     background-color: #f7f7f7;
+    margin-bottom: 10vh;
 }
 
 .createCardHeader{

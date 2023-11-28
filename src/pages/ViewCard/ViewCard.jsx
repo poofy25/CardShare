@@ -18,7 +18,7 @@ import LoadingComponent from '../../components/Loading/Loading';
 import SendBackContactBtn from '../../components/SendBackContact/SendBackContactBtn';
 import SendBackContact from '../../components/SendBackContact/SendBackContact';
 import SaveContactBtn from '../../components/SaveContactBtn/SaveContactBtn';
-
+import ShareCardComponent from '../../components/ShareCard/ShareCard';
 
 import shareIcon from '/src/assets/icons/shareIcon.svg'
 import arrowLeftIcon from '/src/assets/icons/arrowLeftIcon.svg'
@@ -51,8 +51,9 @@ function ViewCardPage() {
     const [contactData , setContactData] = useState(null)
 
     const [sendBackContactStatus , setSendBackContactStatus] = useState(true)
+    const [sharingComponentStatus , setSharingComponentStatus] = useState({active:false , card:null })
 
-
+    console.log(cardData)
    const saveToContacts = ()=>{
 
     if(contactData!==null){
@@ -176,11 +177,12 @@ function ViewCardPage() {
             <div className={styles.viewCardPage}>
               
               <SendBackContact colorPallete={colorPallete} status={sendBackContactStatus} setStatus={setSendBackContactStatus} data={cardData} imgUrl={imgUrl}/>
+              <ShareCardComponent sharingComponentStatus={sharingComponentStatus} setSharingComponentStatus={setSharingComponentStatus}/>
 
               <section className={styles.displaySection}>
                 <div className={styles.displaySectionHeader}>
                   <button onClick={()=>{navigateTo('/cards')}}><img src={arrowLeftIcon}/></button>
-                  <button><img src={shareIcon}/></button>
+                  <button onClick={()=>{setSharingComponentStatus({active:true,card:{...cardData , id:params.id}})}}><img src={shareIcon}/></button>
                 </div>
                 <img src={imgUrl} className={styles.profilePicture}/>
                 

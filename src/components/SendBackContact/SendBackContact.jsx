@@ -56,15 +56,15 @@ function SendBackContact(props) {
                 </label>
                 <label>
                     <p>Job title</p>
-                    <input type='text' placeholder='Your job title' onChange={(e)=>setFormData(current=>{return{...current , title:e.target.value }})} />
+                    <input type='text' placeholder='Your job title'onChange={(e)=>setFormData(current=>{return{...current , title:e.target.value }})} />
                 </label>
                 <label>
-                    <p>Email *</p>
-                    <input type='email' placeholder='Your email' required onChange={(e)=>setFormData(current=>{return{...current , email:e.target.value }})}/>
+                    <p>Email</p>
+                    <input type='email' placeholder='Your email'  onChange={(e)=>setFormData(current=>{return{...current , email:e.target.value }})}/>
                 </label>
                 <label>
-                    <p>Phone Number</p>
-                    <input type='phone' placeholder='Your phone number' onChange={(e)=>setFormData(current=>{return{...current , phonenumber:e.target.value }})}/>
+                    <p>Phone Number *</p>
+                    <input type='phone' placeholder='Your phone number'  required  onChange={(e)=>setFormData(current=>{return{...current , phonenumber:e.target.value }})}/>
                 </label>
 
 

@@ -25,7 +25,7 @@ function MiniCardPopUp(props) {
     const isActive = props.data.active === true
     const setSelectedCard = props.setSelectedCard
 
-    console.log(isActive , selectedCardData) 
+
 
     const data = props.data
     const cardData = data.data
@@ -33,7 +33,7 @@ function MiniCardPopUp(props) {
     const displayData = cardData.displayData
     const cardID = props.data.id
     const pictureRef = ref(storage, `cardImages/${displayData?.imageUUID}`);
-    
+    console.log(cardData , 'card data') 
 
     const deleteCard = ()=>{
 

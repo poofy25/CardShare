@@ -3,6 +3,9 @@ import styles from "./shareCard.module.css"
 
 import QrCode from 'qrcodejs';
 
+import shareIcon from '/src/assets/icons/shareIcon.svg'
+import copyIcon from '/src/assets/svgIcons/copy.svg'
+import qrcodeIcon from '/src/assets/svgIcons/qrcode.svg'
 
 function ShareCardComponent(props) {
 
@@ -15,25 +18,34 @@ function ShareCardComponent(props) {
 
     const copyLinkBtnClick = (e)=>{
 
-        const button = e.target
+        const button = e.currentTarget
         button.disabled = true;
 
         button.classList.add(styles.copiedAnimation);
-         e.target.textContent = 'Link Copied!'
+        button.innerHTML = `<img src='${copyIcon}'/>Link copied!`
+        console.log(e.target , e.currentTarget)
         navigator.clipboard.writeText(`https://share-card.netlify.app/viewcard/${data?.id}`)
         setTimeout(() => {
         button.disabled = false;
-         e.target.textContent = 'Copy Card Link'
+        button.innerHTML = `<img src='${copyIcon}'/>Copy Card link`
         button.classList.remove(styles.copiedAnimation);
         }, 2000);
     }
 
-
-
-
-
-
-
+    const shareCardBtnClick = async () => {
+        try {
+          await navigator.share(
+            {
+                title: "CardShare profile",
+                text: "I wanna share this CardShare profile link!",
+                url:`https://share-card.netlify.app/viewcard/${data?.id}`,
+              }
+          );
+          console.log('sharing')
+        } catch (err) {
+          console.log('cant share' , err)
+        }
+      };
 
 
     useEffect(()=>{
@@ -55,7 +67,7 @@ function ShareCardComponent(props) {
 
 
 
-                <p className={styles.cardName}>Sharing {data?.cardData?.generalData?.cardname}</p>
+                <p className={styles.cardName}>Sharing {data?.cardData?.generalData?.fullname}</p>
 
 
 
@@ -71,10 +83,17 @@ function ShareCardComponent(props) {
                 <button className={styles.copyLinkBtn}
                     onClick={copyLinkBtnClick}
                 >
-                    Copy Card Link
+                    <img src={copyIcon}/>Copy Card Link
                 </button>
 
-                <a className={styles.downloadQRCode} href={document.getElementById('qrCodeImg')?.src} download="CardShareQRCode.png">Download QR Code</a>
+                <button className={styles.shareCardBtn}
+                    onClick={shareCardBtnClick}
+                >
+                    <img src={shareIcon}/>Share Card
+                </button>
+
+                <a className={styles.downloadQRCode} href={document.getElementById('qrCodeImg')?.src} download="CardShareQRCode.png">
+                <img src={qrcodeIcon}/>Download QR Code</a>
 
             </section>
         </div>

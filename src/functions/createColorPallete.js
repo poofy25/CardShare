@@ -38,8 +38,6 @@ const createColorPallete = (defaultColor)=>{
     colorPallete.backgroundLightColor = rgba2rgb('rgb(255,255,255)' , backgroundLightColor)
     colorPallete.colorValues = colorValues
 
-
-    console.log(colorPallete)
     return colorPallete
 }
 
