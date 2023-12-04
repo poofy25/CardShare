@@ -1,6 +1,26 @@
-.allContacts{
-    display: none;
+.allContacts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
 }
-.allContacts.active{
-    display: block;
+.allContacts > section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    padding: 2rem;
+    padding-top: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+}
+
+.allContacts > section > div {
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+.allContacts > section > div:last-child {
+    border-bottom: none;
 }

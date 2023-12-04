@@ -1,0 +1,56 @@
+.request{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.request > img {
+    width: 12.5vw;
+    margin-right: 1rem;
+    aspect-ratio: 1;
+}
+
+.requestName{
+    margin: 0;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.requestName > h4{
+    margin: 0;
+}
+.requestName > h5{
+    margin: 0;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+.requestBtns{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap:1rem;
+    margin-top: 1rem;
+}
+.requestBtns > button {
+    font-weight: 600;
+    padding: 0.5rem;
+    flex: 1;
+    border-radius: 4px;
+}
+.requestBtns > button:first-child{
+    background-color: transparent;
+    border: 1px solid rgb(22, 255, 22);
+    color: rgb(22, 255, 22);
+
+}
+
+.requestBtns > button:last-child{
+    background-color: transparent;
+    border: 1px solid rgb(255, 22, 22);
+    color: rgb(255, 22, 22);
+}

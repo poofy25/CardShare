@@ -45,8 +45,8 @@ function SignInPage() {
 
       async function updateUser(){
         await writeUserToDb(user)
-        console.log('Signed up Succesfull')
-        navigateTo('/profile' , {state:{error:'Signed up Succesfull'}})
+        console.log('Signed in Succesfull')
+        navigateTo('/profile' , {state:{error:'Signed in Succesfull'}})
       }
       updateUser()
 

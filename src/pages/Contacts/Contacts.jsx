@@ -11,28 +11,12 @@ import { auth } from "../../firebase/firebase";
 
 import requestIcon from '/src/assets/icons/requestIcon.png'
 
-const navComponents = {
-    allContacts:(<AllContacts/>),
-    contactrequests:(<ContactRequests/>),
-   
- }
-
-
-
-
-
 function ContactsPage() {
 
 
 
     const [user , loading] = useAuthState(auth);
-    const [activeNavComponent , setActiveNavComponent] = useState(navComponents.allContacts)
-    const changeActiveComponent = (component)=>{
-       //changes active component
-       if (component !== activeNavComponent){
-          setActiveNavComponent(component)
-        }
-     }
+    const [contactRequestsStatus , setContactRequestsStatus] = useState(false)
 
 
     return ( 
@@ -42,15 +26,13 @@ function ContactsPage() {
                <ContactsHeader/>
                <section className={styles.searchSection}>
                   <input type="text" placeholder="Search names, companies and more..."/>
-                  <button onClick={(e)=>changeActiveComponent(navComponents.contactrequests)}><img src={requestIcon}/></button>
+                  <button onClick={(e)=>setContactRequestsStatus(true)}><img src={requestIcon}/></button>
                </section>
 
                <>
-                  <AllContacts
-                     status={activeNavComponent.type.name === navComponents.allContacts.type.name ? 'active' : 'inactive'}
-                  />
+                  <AllContacts contactRequestsStatus={contactRequestsStatus}/>
                   <ContactRequests  
-                     status={activeNavComponent.type.name === navComponents.contactrequests.type.name ? 'active' : 'inactive'}               
+                     status={contactRequestsStatus} setStatus={setContactRequestsStatus}              
                   />
                </>
           </>

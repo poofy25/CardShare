@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import styles from './SendBackContact.module.css'
 import { addDoc , collection } from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
-
+import { serverTimestamp } from 'firebase/firestore'
 function SendBackContact(props) {
-
     const status = props.status
     const setStatus = props.setStatus
     const colorPallete= props.colorPallete
@@ -29,12 +28,14 @@ function SendBackContact(props) {
     const sendingDataToDb = ()=>{
         async function sendData(){
             const docRef = await addDoc(collection(db, "contactsrequests"), {
-            requestData:formData , userId:props.data.userId
+            requestData:formData ,
+            userId:props.data.userId , 
+            createdAt : {formatted:serverTimestamp() , unformatted:Date.now()}
             });
-        setStatus(false)
-        document.getElementById('saveToContactsBtn')?.click()
+            //setStatus(false)
+            document.getElementById('saveToContactsBtn')?.click()
         }
-         sendData()
+        sendData()
     }
 
 

@@ -2,5 +2,55 @@
     display: none;
 }
 .contactRequests.active{
-    display: block;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: fixed;
+    background-color: rgb(30,30,30);
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 99;
+    color: white;
+
+}
+.contactRequests > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
+.contactRequests > header > button {
+    height: 50%;
+    color: white;
+    background-color: transparent;
+    border: none;
+    aspect-ratio: 1;
+    font-size: 1.25rem;
+    font-weight:600;
+}
+.contactRequests > section{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding: 2rem;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+.contactRequests > section > div {
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+.contactRequests > section > div:last-child {
+    border-bottom: none;
 }

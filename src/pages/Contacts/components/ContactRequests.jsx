@@ -1,9 +1,11 @@
 import styles from "./contactRequests.module.css"
 import { useEffect , useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { collection , query , where , getDocs } from "firebase/firestore";
+import { collection , query , where , getDocs , orderBy } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 import { auth } from "../../../firebase/firebase";
+
+import RequestedContact from "../../../components/RequestedContact/RequestedContact";
 
 function ContactRequests(props) {
 
@@ -17,9 +19,9 @@ function ContactRequests(props) {
     
 
     useEffect(()=>{
-        //Fetching all the cards that matches the uid of the user from firestoree
+        //Fetching all the requests that matches the uid of the user from firestoree
         if(user && !loading){
-            const q = query(collection(db, "contactsrequests"), where("userId", "==", user.uid));
+            const q = query(collection(db, "contactsrequests") ,orderBy("createdAt.formatted", 'desc'), where("userId", "==", user.uid));
 
             async function getDocuments(){
                 
@@ -40,6 +42,9 @@ function ContactRequests(props) {
         console.log(requests)
     },[requests])
 
+    useEffect(()=>{
+        console.log(status)
+    },[status])
 
 
 
@@ -50,22 +55,19 @@ function ContactRequests(props) {
 
     return ( 
 
-        <section className={`${styles.contactRequests} ${status==='active' && styles.active}`}>
-            <h1>REQUESTS</h1>
-
+        <section className={`${styles.contactRequests} ${status===true && styles.active}`}>
+            <header>
+                <h1>REQUESTS</h1>
+                <button onClick={(e)=>{props.setStatus(false)}}>x</button>
+            </header> 
+               
             <section>
 
             {requests.map((request)=>{
-                const data = request.requestData
+                const data = request
+                console.log(data)
                 return(
-                    <div>
-                        <h4>{data.fullname}</h4>
-                        <h5>{data.title}</h5>
-                        <h6>{data.email}</h6>
-                        <h6>{data.phonenumber}</h6>
-                        <button>Accept</button>
-                        <button>Deny</button>
-                    </div>
+                    <RequestedContact data={data} setRequests={setRequests} key={data.id} user={user}/>
                 )
             })}
 
