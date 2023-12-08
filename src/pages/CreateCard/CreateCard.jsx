@@ -11,6 +11,7 @@ import { uploadBytes } from 'firebase/storage';
 import { useParams } from 'react-router-dom';
 import { doc , getDoc , setDoc } from 'firebase/firestore';
 import { getDownloadURL } from 'firebase/storage';
+import { serverTimestamp } from 'firebase/firestore';
 
 import isUrl from 'is-url'
 import fieldValues from '../../functions/fields';
@@ -96,7 +97,7 @@ function CreateCardPage(props) {
                const docRef = await addDoc(collection(db, "cards"), {
                cardData ,
                userId:user.uid ,
-               createdAt : firebase.firestore.FieldValue.serverTimestamp()
+               createdAt : serverTimestamp()
                });
             console.log(docRef.id)
             }
